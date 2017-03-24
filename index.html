@@ -13,8 +13,41 @@
     </head>
 
     <body>
+    <!-- header -->
+    <div class="row header-background">
+      <div class="col l4 m4 s4">
+        <img src="img/logo/logo.svg" alt="logo" class="header-logo">
+      </div>
+      <div class="col l4 m4 s4">
+        
+      </div>
+      <div class="col l4 m4 s4">
+        
+      </div>
+    </div>
+    <!-- end of the header -->
+
+    <!-- navbar -->
+    <div class="lang">
+    <ul id="tabs-swipe-demo" class="tabs">
+      <li class="tab col s3"><a href="#test-swipe-1">УКР</a></li>
+      <li class="tab col s3"><a class="active" href="#test-swipe-2">РУС</a></li>
+      <li class="tab col s3"><a href="#test-swipe-3">ENG</a></li>
+    </ul>
+    </div>
+    <div id="test-swipe-1" class="col s12 blue menu-list">Test 1</div>
+    <div id="test-swipe-2" class="col s12 red  menu-list">Test 2</div>
+    <div id="test-swipe-3" class="col s12 green  menu-list">Test 3</div>
+    <!-- end of the navar -->
+
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+      <script>
+      $(document).ready(function(){
+      $('ul.tabs').tabs();
+      });
+
+  </script>
     </body>
   </html>
