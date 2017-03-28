@@ -1,19 +1,34 @@
-.header-background{
+html{
+  max-width: 6080px;
+  margin: 0 auto;
+}
+.header-bg{
   background-image: url("../img/backgrounds/header-background.svg");
   width: 100%;
-  height: 180px;
+  height: 150px;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }
+.container{
+width: 85%;
+}
+::-webkit-input-placeholder {color: black;}
+::-moz-placeholder          {color: black;}
+:-moz-placeholder           {color: black;}
+:-ms-input-placeholder      {color: black;}
 .header-logo{
-  max-width: 50px;
-  height: 50px;
+  background-image: url(../img/logo/logo.svg) !important;
+  height: 150px !important;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .lang{
   z-index: 9999;
   position: absolute;
   right: 0px;
-  height: 100%;
+  top: 110px;
+  height: auto;
 }
 .menu-list{
   height: 50px;
@@ -25,9 +40,178 @@
   background: transparent !important;
 }
 .tabs .tab a {
-  font-size: 12px;
+  padding-left: 0px;
+  padding-right: 10px;
+  padding-bottom: 0;
+  font-size: 18px;
   color: black;
 }
 .tabs .tab a:hover, .tabs .tab a.active {
   color: grey;
+}
+.header-sign-size{
+  font-size: 40px;
+}
+.header-sign-sec{
+  margin-top: -20px;
+  position: relative;
+  font-style: italic;
+  color: red;
+}
+.header-sign-thrd{
+  font-size: 20px;
+  font-weight: bold;
+}
+.menu-list{
+  box-shadow: 6px 6px 6px 6px rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.menu-item{
+  font-size: 25px;
+  padding-left: 35px;
+  line-height: 2.1;
+  margin: 0 auto;
+}
+.menu-item a{
+  color: black !important;
+}
+.menu-item a:hover{
+  color: lightgrey !important;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+  color: red;
+}
+.main-news{
+position: relative;
+    margin-top: 20px;
+    min-height: 350px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.main-news-sec{
+position: relative;
+    margin-top: 20px;
+    min-height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.main-news-small{
+position: relative;
+    min-height: 100px;
+
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.news-owner{
+position: absolute;
+    color: red;
+    top: 6px;
+    left: 5px;
+}
+.mask{
+    background-color: rgba(64, 64, 64, 0.5);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+.mask-small{
+  position: relative;
+
+    background-color: rgba(64, 64, 64, 0.5);
+    
+    
+}
+.news-content{
+   color: white;
+   background-color: rgba(64, 64, 64, 0.8);
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+.box-title{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    font-size: 25px;
+   
+}
+.box-title-fot{
+ display: inline-block; 
+ padding-left: 5px;  
+   padding-bottom: 5px;
+}
+.box-title-fot-sec{
+  padding-left: 10px;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+.box-title-small{
+      font-size: 15px;
+          padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+.box-title-fot-small{
+   display: inline-block; 
+ padding-left: 5px;  
+   padding-bottom: 5px;
+   font-size: 10px;
+}
+.box-title-fot-sec-small{
+  padding-left: 10px;
+  display: inline-block;
+  padding-bottom: 5px;
+   font-size: 10px;
+}
+.block-with-line {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 99;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+.big-sign-line {
+    font-size: 21px;
+  }
+
+.block-line {
+    height: 5px;
+    background-color: black;
+    position: relative;
+    
+}
+.small-news-img{
+  max-width: 100%;
+}
+.news-small-text{
+  font-size: 11.3px;
+}
+.small-news{
+  margin-top: 20px;
+}
+.news-owner-small{
+  margin-top: -5px;
+  color: red;
+}
+.small-news{
+  margin-top: 20px;
+}
+.tabs .indicator {
+    position: absolute;
+bottom: auto;
+margin-right: 10px;
+margin-top: -15px;
+    height: 5px;
+    background-color: #f6b2b5;
+    will-change: left, right;
+}
+.advertisment{
+  margin-top: 20px;
+  background-size: cover;
+  height: 620px !important;
 }
