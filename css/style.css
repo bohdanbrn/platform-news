@@ -26,6 +26,20 @@ html{
   background-position: center;
   background-repeat: no-repeat;
 }
+.cat-name{
+  font-size: 30px !important;
+}
+.cat-name span{
+  font-size: 20px !important;
+}
+.search-num{
+  padding-bottom: 5px;
+  font-style: italic;
+}
+.cat-block{
+padding-right: 10px;
+padding-left: 10px;
+}
 .lang{
   z-index: 9999;
   position: absolute;
