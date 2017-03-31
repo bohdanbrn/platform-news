@@ -2,8 +2,9 @@
 add_theme_support( 'post-thumbnails' ); // adds capabilities to create thumbnails for posts
 
 function short_post_desc( $charlength ) {        //function for display short content for posts
-    //$excerpt = get_the_content();
-    $excerpt = get_the_excerpt();
+    //$excerpt = get_the_excerpt();
+    $excerpt = get_the_content();
+    $excerpt = preg_replace('/<img[^>]+./','', $excerpt);
     if ( mb_strlen( $excerpt ) > $charlength ) {
         $subex = mb_substr( $excerpt, 0, $charlength );
         return $subex . '...';
@@ -31,7 +32,7 @@ function show_no_img_post() {
     echo '
     <div class="news-block">
         <div class="news-title">
-            <a href="#" class="hover-link">' .
+            <a href="' . get_the_permalink() . '" class="hover-link">' .
                 short_post_title(100) . '
             </a>
         </div>
@@ -47,7 +48,7 @@ function show_no_img_post() {
             </a>
         </div>
         <div class="news-desc">
-            <a href="#" class="hover-link">' .
+            <a href="' . get_the_permalink() . '" class="hover-link">' .
                 short_post_desc( 350 ) . '
             </a>
         </div>
@@ -56,17 +57,17 @@ function show_no_img_post() {
 }
 
 
-function show_default_post() {
+function show_default_post( $display_img = null ) {
     echo '
     <div class="news-block">
         <div class="news-title">
-            <a href="#" class="hover-link"> ' .
-                short_post_title(100) . '
+            <a href="' . get_the_permalink() . '" class="hover-link"> ' .
+                short_post_title(120) . '
             </a>
         </div>
         <div class="news-time">
             <a href="#" class="hover-link">
-                <i class="material-icons"> access_time</i>' .
+                <i class="material-icons">access_time</i>' .
                 get_the_time('j.m.Y') . '
             </a>
         </div>
@@ -74,17 +75,23 @@ function show_default_post() {
             <a href="#" class="hover-link">
                 <i class="material-icons">account_circle</i>Телеканал новин
             </a>
-        </div>
-        <a href="#" class="hover-link"> 
-            <img class="news-img" src="' . get_the_post_thumbnail_url( '', 'large' ) . '" alt="news image">
-        </a>
+        </div>';
+
+        if ( $display_img == true ) {
+            echo '
+            <a href="' . get_the_permalink() . '" class="hover-link"> 
+                <img class="news-img" src="' . first_post_image() . '" alt="news image">
+            </a>';
+        }
+
+        echo '
         <div class="news-desc">
-            <a href="#" class="hover-link">' .
-                short_post_desc( 350 ) . '
+            <a href="' . get_the_permalink() . '" class="hover-link">' .
+                short_post_desc(450) . '
             </a>
         </div>
         <div class="news-block-line"></div>
-      </div>';
+    </div>';
 }
 
 
@@ -95,23 +102,14 @@ function show_default_post() {
 	    return '
 	    <nav class="%1$s" role="navigation">
 	        <div class="nav-links">%3$s</div>
-	    </nav>    
-	    ';
+	    </nav>';
     }
+    global $pagination_args;
     $pagination_args = array(
         'prev_text' => __( '&#8249;' ),
         'next_text' => __( '&#8250;' ),
     );
-
-	/*
-    Вид базового шаблону:
-    <nav class="navigation %1$s" role="navigation">
-    <h2 class="screen-reader-text">%2$s</h2>
-    <div class="nav-links">%3$s</div>
-    </nav>
-    */
 //end pagination settings
-
 
 
 //custom login form
@@ -144,5 +142,37 @@ function show_default_post() {
         return $ending; 
     } 
 //end algorithm declension of nouns after numerals
+
+
+// Вивід першої картинки з поста
+function first_post_image() {
+    global $post, $posts;
+    $first_img = '';
+    ob_start();
+    ob_end_clean();
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    $first_img = $matches [1] [0];
+    if( empty( $first_img ) ) {
+        // укажите путь к изображению, которое будет выводится по умолчанию. 
+        $first_img = "/wp-content/themes/platform-news/img/backgrounds/default.png";
+    }
+    return $first_img;
+}
+
+
+// Відключити автоматичне оновлення ядра
+define( 'WP_AUTO_UPDATE_CORE', false );
+add_filter( 'pre_site_transient_update_core', create_function('$a', "return null;") );
+wp_clear_scheduled_hook('wp_version_check');
+
+
+//сортування записів по даті в адмінці
+function order_posts_in_admin_by_id( $query ) {
+	if ( is_admin() && $query->is_main_query() ) {
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'DESC' );
+	}
+}
+add_action( 'pre_get_posts', 'order_posts_in_admin_by_id' );
 
 ?>
