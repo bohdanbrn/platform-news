@@ -79,6 +79,9 @@
       <li class="tab col s3"><a href="#test-swipe-3">ENG</a></li>
     </ul>
   </div>
+
+  <?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 0 ) ); ?>
+
   <div id="test-swipe-1" class="col s12 menu-list center">
     <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Політика</a></span>
     <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Економіка</a></span>

@@ -28,30 +28,30 @@
                                         <span class="hover-link">' . short_post_title(65) . '</span>
                                     </div>
                                     <div class="box-title-fot">' . get_the_time('j.m.Y') . '</div>
-                                    <div class="box-title-fot-sec">тут ше шось пише</div>
+                                    <div class="box-title-fot-sec">' . get_the_author() . '</div>
                                 </div>
                             </div>
                         </div>
                     </a>';
                 } //end if
                 else if ( $post_count == 1 ) {
-                        echo '
-                        <div style="padding-left: 0;" class="col l6 m6 s6">
-                            <a href="' . get_the_permalink() . '" class="hover-link"> 
-                                <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
-                                    <div class="mask">
-                                        <div class="news-owner">lorem ipsum</div>
-                                        <div class="news-content">
-                                            <div class="box-title-small">
-                                                <span class="hover-link">' . short_post_title(65) . '</span>
-                                            </div>
-                                            <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>
-                                            <div class="box-title-fot-sec-small">тут ше шось пише</div>
+                    echo '
+                    <div style="padding-left: 0;" class="col l6 m6 s6">
+                        <a href="' . get_the_permalink() . '" class="hover-link"> 
+                            <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
+                                <div class="mask">
+                                    <div class="news-owner">lorem ipsum</div>
+                                    <div class="news-content">
+                                        <div class="box-title-small">
+                                            <span class="hover-link">' . short_post_title(65) . '</span>
                                         </div>
+                                        <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>
+                                        <div class="box-title-fot-sec-small">' . get_the_author() . '</div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>';
+                            </div>
+                        </a>
+                    </div>';
                 } //end else if
                 else {
                     echo '
@@ -65,7 +65,7 @@
                                             <span class="hover-link">' . short_post_title(65) . '</span>
                                         </div>
                                         <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>
-                                        <div class="box-title-fot-sec-small">тут ше шось пише</div>
+                                        <div class="box-title-fot-sec-small">' . get_the_author() . '</div>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                         <div class="col l6 m6 s6">
                             <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
                                 <div class="mask">
-                                    <div class="news-content"></div>
+                                    <div class="news-content">' . get_the_author() . '</div>
                                 </div>
                             </div>
                         </div>
@@ -129,15 +129,21 @@
 
 <!-- news block -->
 <?php
+    $lang = get_locale();
+    $lang = explode("_", $lang);
+    $lang = $lang[0];
     $args = array(
         'post_type' => array('post'),
-        'posts_per_page' => 7,
+        'lang' => $lang, // query posts in all languages
+        'posts_per_page' => 9,
+        'paged' => ( get_query_var('paged') ) ? get_query_var('paged') : 1,
         'publish' => true,
-        'post__not_in' => $display_posts, //displays all articles, other than those
+        //'post__not_in' => $display_posts, //displays all news, other than those
         'orderby' => 'date',
         'order' => 'DESC'
     );
     $post_count = 0;
+    
     $query = new WP_Query( $args );
     if( $query->have_posts() ) {
         echo '
