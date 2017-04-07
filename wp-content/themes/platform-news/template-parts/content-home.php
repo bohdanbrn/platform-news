@@ -1,10 +1,12 @@
 <!-- top news block -->
 <div class="row container">
     <?php
+    global $lang;
         $args = array(
             'post_type' => array('post'),
             'posts_per_page' => 3,
             'publish' => true,
+            'category__in' => array( $lang ), 
             'orderby' => 'date',
             'order' => 'DESC'
         );
@@ -12,7 +14,7 @@
 		$display_posts = array();
         $post_count = 0;
         $query = new WP_Query( $args );
-        if( $query->have_posts() ) {
+        if ( $query->have_posts() ) {
             echo '
             <div class="col l6 m12 s12">';
             while ( $query->have_posts() ) {
@@ -84,12 +86,13 @@
             'post_type' => array('post'),
             'posts_per_page' => 5,
             'publish' => true,
+            'category__in' => array( $lang ), 
             'post__not_in' => $display_posts, //displays all articles, other than those
             'orderby' => 'date',
             'order' => 'DESC'
         );
         $query = new WP_Query( $args );
-        if( $query->have_posts() ) {
+        if ( $query->have_posts() ) {
             echo '
             <div class="col l4 m10 s12">
                 <div class="block-with-line">
@@ -129,15 +132,13 @@
 
 <!-- news block -->
 <?php
-    $lang = get_locale();
-    $lang = explode("_", $lang);
-    $lang = $lang[0];
     $args = array(
         'post_type' => array('post'),
-        'lang' => $lang, // query posts in all languages
+        //'lang' => $lang, // query posts in all languages
         'posts_per_page' => 9,
         'paged' => ( get_query_var('paged') ) ? get_query_var('paged') : 1,
         'publish' => true,
+        'category__in' => array( $lang ), 
         //'post__not_in' => $display_posts, //displays all news, other than those
         'orderby' => 'date',
         'order' => 'DESC'

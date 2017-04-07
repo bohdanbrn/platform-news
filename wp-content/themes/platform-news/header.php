@@ -1,3 +1,33 @@
+<?php
+  global $lang;
+  global $sec_lang;
+  $lang = '';
+  $sec_lang = '';
+  if ( $_POST['ua'] || $_POST['ru'] || $_POST['en'] ) {
+    if ( $_POST['ua'] ) {
+      setcookie ( 'lang', '211', time() + 259200 ); //259200 - 3 days
+      $lang = '211';
+    }
+    else if ( $_POST['ru'] ) {
+      setcookie ( 'lang', '212', time() + 259200 );
+      $lang = '212';
+    }
+    else if ( $_POST['en'] ) {
+      setcookie ( 'lang', '213', time() + 259200 );
+      $lang = '213';
+    }
+  }
+  else {
+    if ( $_COOKIE['lang'] ) {
+      $lang = $_COOKIE['lang'];
+    }
+    else {
+      setcookie ( 'lang', '211', time() + 259200 );
+      $lang = '211';
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -73,42 +103,65 @@
 
   <!-- navbar -->
   <div class="lang right">
-    <ul id="tabs-swipe-demo" class="tabs">
+    <div id="tabs-swipe-demo" class="tabs">
+      <form method="post" action="">
+        <input type="hidden" name="ua" value="true">
+        <input type="submit" value="УКР">
+      </form>
+      <form method="post" action="">
+        <input type="hidden" name="ru" value="true">
+        <input type="submit" value="РУС">
+      </form>
+      <form method="post" action="">
+        <input type="hidden" name="en" value="true">
+        <input type="submit" value="ENG">
+      </form>
+      <!--
       <li class="tab col s3"><a href="#test-swipe-1" class="active">УКР</a></li>
       <li class="tab col s3"><a href="#test-swipe-2">РУС</a></li>
       <li class="tab col s3"><a href="#test-swipe-3">ENG</a></li>
-    </ul>
+      -->
+    </div>
   </div>
 
-  <?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 0 ) ); ?>
-
-  <div id="test-swipe-1" class="col s12 menu-list center">
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Політика</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Економіка</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Спорт</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бізнес</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Війна</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Культура</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бізнес</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Війна</a></span>
-  </div>
-  <div id="test-swipe-2" class="col s12 menu-list center">
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Политика</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Економика</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Спорт</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бизнес</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Война</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Культура</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бизнес</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Война</a></span>
-  </div>
-  <div id="test-swipe-3" class="col s12 menu-list center">
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Politics</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Ecomomic</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Sport</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Bysiness</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">War</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Culture</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Bysiness</a></span>
-    <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">War</a></span>
-  </div>
+  <?php
+    if ( $lang == 212 ) {
+      echo '
+      <div id="test-swipe-2" class="col s12 menu-list center">
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Политика</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Економика</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Спорт</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бизнес</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Война</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Культура</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бизнес</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Война</a></span>
+      </div>';
+    }
+    else if ( $lang == 213 ) {
+      echo '
+      <div id="test-swipe-3" class="col s12 menu-list center">
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Politics</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Ecomomic</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Sport</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Bysiness</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">War</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Culture</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Bysiness</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">War</a></span>
+      </div>';
+    }
+    else {
+      echo '
+      <div id="test-swipe-1" class="col s12 menu-list center">
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Політика</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Економіка</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Спорт</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бізнес</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Війна</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(4); ?>" class="hover-link">Культура</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(1); ?>" class="hover-link">Бізнес</a></span>
+        <span class="menu-item"><a href="<?php echo get_category_link(3); ?>" class="hover-link">Війна</a></span>
+      </div>';
+    }
+  ?>
