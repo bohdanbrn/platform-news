@@ -1,17 +1,32 @@
 <?php 
-	get_header(); 
+	get_header();
 ?>
 
 <div class="row container cat-block">
 	<div class="block-with-line ">
     	<div class="big-sign-line cat-name">
 			<?php
+				global $lang;
+				$search_ending = array();
+				$no_found_text = '';
+                if ( $lang == 212 ) {
+                    $search_ending = array('запись', 'записи', 'записи');
+                    $no_found_text = 'Публикаций по данной темой не найдено';
+                }
+                else if ( $lang == 213 ) {                    
+                    $search_ending = array('record', 'records', 'records');
+                    $no_found_text = 'Publications on the topic dannoy not found';
+                }
+                else {
+                	$search_ending = array('запис', 'записи', 'записів');
+                	$no_found_text = 'Публікацій за даною темою не знайдено';
+                }
 				$results_number = $wp_query->found_posts;
-				$slovo = getNumEnding( $query->found_posts, array('запис', 'записи', 'записів') );
+				$slovo = getNumEnding( $query->found_posts, $search_ending );
 				single_cat_title();
 				echo '(' . $wp_query->found_posts . ' ' . $slovo . ')';
 				if  ( $results_number == 0 ) {
-					echo '<div class="tag-name-description">Публікацій за даною темою не знайдено</div>';
+					echo '<div class="tag-name-description">' . $no_found_text . '</div>';
 				}
 			?>
 		</div>

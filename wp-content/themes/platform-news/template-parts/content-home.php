@@ -1,7 +1,7 @@
 <!-- top news block -->
 <div class="row container">
     <?php
-    global $lang;
+        global $lang;
         $args = array(
             'post_type' => array('post'),
             'posts_per_page' => 3,
@@ -96,30 +96,41 @@
             echo '
             <div class="col l4 m10 s12">
                 <div class="block-with-line">
-                    <div class="big-sign-line">Популярне</div>
+                    <div class="big-sign-line">';
+                        if ( $lang == 212 ) {
+                            echo 'Популярное';
+                        }
+                        else if ( $lang == 213 ) {
+                            echo 'Popular';
+                        }
+                        else {
+                            echo 'Популярне';
+                        }
+                    echo '
+                    </div>
                     <div class="block-line"></div>
                 </div>';
-            while ( $query->have_posts() ) {
-                $query->the_post();
-                echo '
-                <div class="row small-news">
-                    <a href="' . get_the_permalink() . '" class="hover-link"> 
-                        <div class="col l6 m6 s6">
-                            <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
-                                <div class="mask">
-                                    <div class="news-content">' . get_the_author() . '</div>
+                while ( $query->have_posts() ) {
+                    $query->the_post();
+                    echo '
+                    <div class="row small-news">
+                        <a href="' . get_the_permalink() . '" class="hover-link"> 
+                            <div class="col l6 m6 s6">
+                                <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
+                                    <div class="mask">
+                                        <div class="news-content">' . get_the_author() . '</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col l6 m6 s6">
-                            <div class="news-owner-small">' . short_post_title(40) . '</div>
-                            <div class="news-small-text">' . short_post_desc(150) . '</div>
-                        </div>
-                    </a>
-                </div>';
-                $display_posts[] = get_the_ID();
-            } //end while
-            echo '
+                            <div class="col l6 m6 s6">
+                                <div class="news-owner-small">' . short_post_title(40) . '</div>
+                                <div class="news-small-text">' . short_post_desc(150) . '</div>
+                            </div>
+                        </a>
+                    </div>';
+                    $display_posts[] = get_the_ID();
+                } //end while
+                echo '
             </div>';
         } //end if
     ?>
@@ -134,11 +145,10 @@
 <?php
     $args = array(
         'post_type' => array('post'),
-        //'lang' => $lang, // query posts in all languages
         'posts_per_page' => 9,
         'paged' => ( get_query_var('paged') ) ? get_query_var('paged') : 1,
         'publish' => true,
-        'category__in' => array( $lang ), 
+        'category__in' => $lang, 
         //'post__not_in' => $display_posts, //displays all news, other than those
         'orderby' => 'date',
         'order' => 'DESC'
@@ -146,7 +156,7 @@
     $post_count = 0;
     
     $query = new WP_Query( $args );
-    if( $query->have_posts() ) {
+    if ( $query->have_posts() ) {
         echo '
         <div class="row container all-news">
             <div class="col l9 m9 s12">';
