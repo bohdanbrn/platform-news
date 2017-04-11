@@ -1,26 +1,29 @@
 <?php
 
+/*
+
 if ( $_COOKIE['lang'] ) {
-	$_COOKIE['lang'] = 'qwerty';
+	//$_COOKIE['lang'] = 'qwerty';
+	setcookie ( 'lang', 'qwerty', time() + 259200 ); //259200 - 3 days
 }
 else {
 	setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
 }
-/*
+*/
 	global $lang;
 	$lang = '';
 	if ( $_POST['ua'] || $_POST['ru'] || $_POST['en'] ) { //якщо був натиснутий перемикач мов
 		if ( $_COOKIE['lang'] ) { //якщо вже існує COOKIE['lang']
 			if ( $_POST['ua'] ) {
-				$_COOKIE['lang'] = 211;
+				setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
 				$lang = 211;
 			}
 			else if ( $_POST['ru'] ) {
-				$_COOKIE['lang'] = 212;
+				setcookie ( 'lang', 212, time() + 259200 );
 				$lang = 212;
 			}
 			else if ( $_POST['en'] ) {
-				$_COOKIE['lang'] = 213;
+				setcookie ( 'lang', 213, time() + 259200 );
 				$lang = 213;
 			}
 		}
@@ -48,7 +51,6 @@ else {
 			$lang = 211;
 		}
 	}
-*/
 ?>
 
 <!DOCTYPE html>
@@ -107,8 +109,10 @@ else {
 
 <?php
 	global $lang;
+	/*
 	echo '<h1>' . $lang . '</h1>';
 	echo "<br> <br>" . $_COOKIE['lang'];
+	*/
 	if ( $lang == 212 ) {
 		get_template_part('lang/ru/navigation');
 	}
