@@ -4,7 +4,7 @@ add_theme_support( 'post-thumbnails' ); // adds capabilities to create thumbnail
 function short_post_desc( $charlength ) {        //function for display short content for posts
     //$excerpt = get_the_excerpt();
     $excerpt = get_the_content();
-    $excerpt = preg_replace('/<img[^>]+./','', $excerpt);
+    $excerpt = strip_tags( $excerpt );
     if ( mb_strlen( $excerpt ) > $charlength ) {
         $subex = mb_substr( $excerpt, 0, $charlength );
         return $subex . '...';

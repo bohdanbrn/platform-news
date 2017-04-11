@@ -1,29 +1,54 @@
 <?php
+
+if ( $_COOKIE['lang'] ) {
+	$_COOKIE['lang'] = 'qwerty';
+}
+else {
+	setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
+}
+/*
 	global $lang;
 	$lang = '';
-	if ( $_POST['ua'] || $_POST['ru'] || $_POST['en'] ) {
-		if ( $_POST['ua'] ) {
-			setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
-			$lang = 211;
+	if ( $_POST['ua'] || $_POST['ru'] || $_POST['en'] ) { //якщо був натиснутий перемикач мов
+		if ( $_COOKIE['lang'] ) { //якщо вже існує COOKIE['lang']
+			if ( $_POST['ua'] ) {
+				$_COOKIE['lang'] = 211;
+				$lang = 211;
+			}
+			else if ( $_POST['ru'] ) {
+				$_COOKIE['lang'] = 212;
+				$lang = 212;
+			}
+			else if ( $_POST['en'] ) {
+				$_COOKIE['lang'] = 213;
+				$lang = 213;
+			}
 		}
-		else if ( $_POST['ru'] ) {
-			setcookie ( 'lang', 212, time() + 259200 );
-			$lang = 212;
-		}
-		else if ( $_POST['en'] ) {
-			setcookie ( lang, 213, time() + 259200 );
-			$lang = 213;
+		else { //якщо не існує COOKIE['lang']
+			if ( $_POST['ua'] ) {
+				setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
+				$lang = 211;
+			}
+			else if ( $_POST['ru'] ) {
+				setcookie ( 'lang', 212, time() + 259200 );
+				$lang = 212;
+			}
+			else if ( $_POST['en'] ) {
+				setcookie ( lang, 213, time() + 259200 );
+				$lang = 213;
+			}
 		}
 	}
-	else {
-		if ( $_COOKIE['lang'] ) {
+	else { //якщо не був натиснутий перемикач мов
+		if ( $_COOKIE['lang'] ) { //якщо існує COOKIE['lang']
 			$lang = $_COOKIE['lang'];
 		}
-		else {
+		else { //якщо не існує COOKIE['lang']
 			setcookie ( 'lang', 211, time() + 259200 );
 			$lang = 211;
 		}
 	}
+*/
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +106,9 @@
 </head>
 
 <?php
+	global $lang;
+	echo '<h1>' . $lang . '</h1>';
+	echo "<br> <br>" . $_COOKIE['lang'];
 	if ( $lang == 212 ) {
 		get_template_part('lang/ru/navigation');
 	}

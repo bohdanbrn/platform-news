@@ -21,15 +21,15 @@
     <!-- navbar -->
     <div class="lang right">
         <div id="tabs-swipe-demo" class="tabs">
-            <form method="post" action="">
+            <form method="post" action="<?php echo get_home_url(); ?>">
                 <input type="hidden" name="ua" value="true">
                 <input type="submit" value="УКР">
             </form>
-            <form method="post" action="">
+            <form method="post" action="<?php echo get_home_url(); ?>">
                 <input type="hidden" name="ru" value="true">
                 <input type="submit" value="РУС">
             </form>
-            <form method="post" action="">
+            <form method="post" action="<?php echo get_home_url(); ?>">
                 <input type="hidden" name="en" value="true">
                 <input type="submit" value="ENG">
             </form>

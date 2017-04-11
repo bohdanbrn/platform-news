@@ -12,7 +12,7 @@
         </div>
         <div class="col l4 m9 s7">
             <?php
-            get_search_form();
+                get_search_form();
             ?>
         </div>
     </div>
@@ -21,23 +21,23 @@
     <!-- navbar -->
     <div class="lang right">
         <div id="tabs-swipe-demo" class="tabs">
-            <form method="post" action="">
+            <form method="post" action="<?php echo get_home_url(); ?>">
                 <input type="hidden" name="ua" value="true">
                 <input type="submit" value="УКР">
             </form>
-            <form method="post" action="">
+            <form method="post" action="<?php echo get_home_url(); ?>">
                 <input type="hidden" name="ru" value="true">
                 <input type="submit" value="РУС">
             </form>
-            <form method="post" action="">
+            <form method="post" action="<?php echo get_home_url(); ?>">
                 <input type="hidden" name="en" value="true">
                 <input type="submit" value="ENG">
             </form>
-        <!--
-        <li class="tab col s3"><a href="#test-swipe-1" class="active">УКР</a></li>
-        <li class="tab col s3"><a href="#test-swipe-2">РУС</a></li>
-        <li class="tab col s3"><a href="#test-swipe-3">ENG</a></li>
-        -->
+            <!--
+            <li class="tab col s3"><a href="#test-swipe-1" class="active">УКР</a></li>
+            <li class="tab col s3"><a href="#test-swipe-2">РУС</a></li>
+            <li class="tab col s3"><a href="#test-swipe-3">ENG</a></li>
+            -->
         </div>
     </div>
 
