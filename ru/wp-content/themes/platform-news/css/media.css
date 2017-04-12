@@ -1,0 +1,25 @@
+
+/*tablet*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .header-bg{
+height: 100%;
+  }
+  .lang {
+    top: auto;
+    margin-top: -50px;
+  }
+  .tabs .tab a {
+    font-size: 30px;
+  }
+  .container{
+    width: 100%;
+  }
+    .menu-item{
+  font-size: 31px;
+    padding-left: 15px;
+}
+.menu-list{
+  height: auto;
+}
+
+}

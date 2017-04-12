@@ -1,58 +1,3 @@
-<?php
-
-/*
-
-if ( $_COOKIE['lang'] ) {
-	//$_COOKIE['lang'] = 'qwerty';
-	setcookie ( 'lang', 'qwerty', time() + 259200 ); //259200 - 3 days
-}
-else {
-	setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
-}
-*/
-	global $lang;
-	$lang = '';
-	if ( $_POST['ua'] || $_POST['ru'] || $_POST['en'] ) { //якщо був натиснутий перемикач мов
-		if ( $_COOKIE['lang'] ) { //якщо вже існує COOKIE['lang']
-			if ( $_POST['ua'] ) {
-				setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
-				$lang = 211;
-			}
-			else if ( $_POST['ru'] ) {
-				setcookie ( 'lang', 212, time() + 259200 );
-				$lang = 212;
-			}
-			else if ( $_POST['en'] ) {
-				setcookie ( 'lang', 213, time() + 259200 );
-				$lang = 213;
-			}
-		}
-		else { //якщо не існує COOKIE['lang']
-			if ( $_POST['ua'] ) {
-				setcookie ( 'lang', 211, time() + 259200 ); //259200 - 3 days
-				$lang = 211;
-			}
-			else if ( $_POST['ru'] ) {
-				setcookie ( 'lang', 212, time() + 259200 );
-				$lang = 212;
-			}
-			else if ( $_POST['en'] ) {
-				setcookie ( lang, 213, time() + 259200 );
-				$lang = 213;
-			}
-		}
-	}
-	else { //якщо не був натиснутий перемикач мов
-		if ( $_COOKIE['lang'] ) { //якщо існує COOKIE['lang']
-			$lang = $_COOKIE['lang'];
-		}
-		else { //якщо не існує COOKIE['lang']
-			setcookie ( 'lang', 211, time() + 259200 );
-			$lang = 211;
-		}
-	}
-?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -111,19 +56,69 @@ else {
 	</style>
 </head>
 
-<?php
-	global $lang;
-	/*
-	echo '<h1>' . $lang . '</h1>';
-	echo "<br> <br>" . $_COOKIE['lang'];
-	*/
-	if ( $lang == 212 ) {
-		get_template_part('lang/ru/navigation');
-	}
-	else if ( $lang == 213 ) {
-		get_template_part('lang/en/navigation');
-	}
-	else {
-		get_template_part('lang/ua/navigation');
-	}
-?>
+<body>
+    <!-- header -->
+    <div style="margin-bottom: 0;" class="row header-bg">
+        <a href="<?php echo get_home_url(); ?>">
+            <div class="col l4 m6 s12 header-logo center"></div>
+        </a>
+        <div class="col l4 m6 s12 left float-for-mob">
+            <div class="header-sign-size">PLATFORM
+                <div class="header-sign-size header-sign-sec">NEWS</div>
+            </div>
+            <div class="header-sign-thrd">НОВИНИ В УКРАЇНІ ТА СВІТІ</div>
+        </div>
+        <div class="col l4 m9 s7">
+            <?php
+                get_search_form();
+            ?>
+        </div>
+    </div>
+    <!-- end of the header -->
+
+    <!-- navbar -->
+    <div class="lang right">
+        <div id="tabs-swipe-demo" class="tabs">
+            <!--
+            <form method="post" action="<?php echo get_home_url(); ?>">
+                <input type="hidden" name="ua" value="true">
+                <input type="submit" value="УКР">
+            </form>
+            <form method="post" action="<?php echo get_home_url(); ?>">
+                <input type="hidden" name="ru" value="true">
+                <input type="submit" value="РУС">
+            </form>
+            <form method="post" action="<?php echo get_home_url(); ?>">
+                <input type="hidden" name="en" value="true">
+                <input type="submit" value="ENG">
+            </form>
+            -->
+
+            <li class="tab col s3"><a href="<?php echo get_home_url(); ?>" class="active">УКР</a></li>
+            <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/ru">РУС</a></li>
+            <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/en">ENG</a></li>
+        </div>
+    </div>
+
+    <div id="test-swipe-1" class="col s12 menu-list center">
+        <?php
+            $args = array(
+                'taxonomy'      => 'category', // название таксономии с WP 4.5
+                'number'        => 8,
+                'orderby'       => 'count',
+                'order'         => 'DESC',
+                'hide_empty'    => true,
+                'fields'        => 'all',
+                'hierarchical'  => true,
+            );
+            $myterms = get_terms( $args );
+            foreach( $myterms as $term ) {
+                echo '
+				<span class="menu-item">
+					<a href="' . get_category_link( $term->term_id ) . '" class="hover-link">' . 
+					$term->name . '
+					</a>
+				</span>';
+            }
+        ?>
+    </div>

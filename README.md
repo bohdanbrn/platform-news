@@ -1,5 +1,8 @@
 # platform-news
 
+ver. 0.5
+  - встановив 2 додаткових вордпреси (рос. та англ.)
+
 ver. 0.43
   - динамічний текст в тезі <title> (header.php)
   - закоментував вивід джерела новини (content-home.php, functions.php)
