@@ -1,5 +1,10 @@
 # platform-news
 
+ver. 0.43
+  - динамічний текст в тезі <title> (header.php)
+  - закоментував вивід джерела новини (content-home.php, functions.php)
+  - перейменував БД з platform_news.sql на platformnews.sql
+
 ver. 0.42
   - виправив вивід новин на головній сторінці (header.php)
 

@@ -56,7 +56,11 @@ else {
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Platform-News</title>
+	<title>
+		<?php
+			echo wp_get_document_title();
+		?>
+	</title>
 	<meta charset="utf-8">
 	<!--Import Google Icon Font-->
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

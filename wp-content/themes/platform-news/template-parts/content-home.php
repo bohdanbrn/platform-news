@@ -29,9 +29,9 @@
                                     <div class="box-title">
                                         <span class="hover-link">' . short_post_title(65) . '</span>
                                     </div>
-                                    <div class="box-title-fot">' . get_the_time('j.m.Y') . '</div>
-                                    <div class="box-title-fot-sec">' . get_the_author() . '</div>
-                                </div>
+                                    <div class="box-title-fot">' . get_the_time('j.m.Y') . '</div>' .
+                                    //<div class="box-title-fot-sec">' . get_the_author() . '</div>
+                                '</div>
                             </div>
                         </div>
                     </a>';
@@ -47,9 +47,9 @@
                                         <div class="box-title-small">
                                             <span class="hover-link">' . short_post_title(65) . '</span>
                                         </div>
-                                        <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>
-                                        <div class="box-title-fot-sec-small">' . get_the_author() . '</div>
-                                    </div>
+                                        <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>' .
+                                        //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
+                                    '</div>
                                 </div>
                             </div>
                         </a>
@@ -66,9 +66,9 @@
                                         <div class="box-title-small">
                                             <span class="hover-link">' . short_post_title(65) . '</span>
                                         </div>
-                                        <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>
-                                        <div class="box-title-fot-sec-small">' . get_the_author() . '</div>
-                                    </div>
+                                        <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>' .
+                                        //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
+                                    '</div>
                                 </div>
                             </div>
                         </a>
@@ -117,9 +117,9 @@
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="col l6 m6 s6">
                                 <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
-                                    <div class="mask">
-                                        <div class="news-content">' . get_the_author() . '</div>
-                                    </div>
+                                    <div class="mask">' .
+                                        //<div class="news-content">' . get_the_author() . '</div>
+                                    '</div>
                                 </div>
                             </div>
                             <div class="col l6 m6 s6">

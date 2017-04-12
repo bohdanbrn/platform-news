@@ -43,8 +43,8 @@ function show_no_img_post() {
         <div class="one-news-owner">
             <a href="#" class="hover-link">
                 <i class="material-icons">account_circle</i>' . 
-                get_the_author() . '
-            </a>
+                //get_the_author() . '
+            '</a>
         </div>
         <div class="news-desc">
             <a href="' . get_the_permalink() . '" class="hover-link">' .
@@ -71,8 +71,8 @@ function show_default_post( $display_img = null ) {
         <div class="one-news-owner">
             <a href="' . get_author_posts_url( get_the_author_meta('ID') ) . '" class="hover-link">
                 <i class="material-icons">account_circle</i>' . 
-                get_the_author() . '
-            </a>
+                //get_the_author() . '
+            '</a>
         </div>';
 
         if ( $display_img == true ) {
