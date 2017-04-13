@@ -15,21 +15,33 @@
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/media.css">
 
 	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<style>
 		/*mobile*/
 		@media screen and (max-width: 767px) {
 			.header-bg{
 				height: 100%;
 			}
+			  .box-title {
+
+    font-size: 15px;
+}
 			.container{
 				width: 100%;
+			}
+			.no-mob-pad{
+				padding-left: 0 !important; 
+				padding-right: 0 !important;
 			}
 			.advertisment{
 				max-height: 300px;
 			}
+			.news-title {
+    font-size: 20px;
+}
 			.lang {
 				top: auto;
+				right: 0;
 				margin-top: -50px;
 			}
 			.menu-item{
@@ -54,15 +66,23 @@
 			}
 		}
 	</style>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4847471792519024",
+    enable_page_level_ads: true
+  });
+</script>
 </head>
 
 <body>
     <!-- header -->
-    <div style="margin-bottom: 0;" class="row header-bg">
+    <div style="margin-bottom: 0;" class="row  header-bg">
+    <div class="container">
         <a href="<?php echo get_home_url(); ?>">
-            <div class="col l4 m6 s12 header-logo center"></div>
+            <div class="col l3 m6 s12 header-logo "></div>
         </a>
-        <div class="col l4 m6 s12 left float-for-mob">
+        <div class="col l5 m6 s12 left float-for-mob">
             <div class="header-sign-size">PLATFORM
                 <div class="header-sign-size header-sign-sec">NEWS</div>
             </div>
@@ -73,12 +93,13 @@
                 get_search_form();
             ?>
         </div>
+        </div>
     </div>
     <!-- end of the header -->
 
     <!-- navbar -->
-    <div class="lang right">
-        <div id="tabs-swipe-demo" class="tabs">
+    <div class="lang right ">
+        <div id="tabs-swipe-demo" class="tabs ">
             <!--
             <form method="post" action="<?php echo get_home_url(); ?>">
                 <input type="hidden" name="ua" value="true">

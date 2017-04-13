@@ -14,7 +14,7 @@
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) {
             echo '
-            <div class="col l6 m12 s12">';
+            <div class="col l7 m7 s12">';
             while ( $query->have_posts() ) {
                 $query->the_post();
                 if ( $post_count == 0 ) {
@@ -91,7 +91,7 @@
         $query = new WP_Query( $args );
         if ( $query->have_posts() ) {
             echo '
-            <div class="col l4 m10 s12">
+            <div class="col l5 m5 s12">
                 <div class="block-with-line">
                     <div class="big-sign-line">Популярне</div>
                     <div class="block-line"></div>
@@ -103,14 +103,15 @@
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="col l6 m6 s6">
                                 <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
-                                    <div class="mask">' .
+                                    <div class="mask">
+                                    <div class="news-owner news-owner-small-block">lorem ipsum</div>' .
                                         //<div class="news-content">' . get_the_author() . '</div>
                                     '</div>
                                 </div>
                             </div>
                             <div class="col l6 m6 s6">
                                 <div class="news-owner-small">' . short_post_title(40) . '</div>
-                                <div class="news-small-text">' . short_post_desc(150) . '</div>
+                                <div class="news-small-text">' . short_post_desc(90) . '</div>
                             </div>
                         </a>
                     </div>';
@@ -121,7 +122,7 @@
         } //end if
     ?>
 
-    <div style="background-image: url(http://www.mixalmebel.com.ua/wp-content/uploads/2014/10/reklama1.jpg);" class="col l2 m2 s12 advertisment"></div>
+    <div style="background-image: url(http://www.mixalmebel.com.ua/wp-content/uploads/2014/10/reklama1.jpg);" class="col l12 m12 s12 hide advertisment"></div>
 </div>
 
 <div class="block-line container"></div>
