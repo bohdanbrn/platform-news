@@ -36,7 +36,7 @@
                 } //end if
                 else if ( $post_count == 1 ) {
                     echo '
-                    <div style="padding-left: 0;" class="col l6 m6 s6">
+                    <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
                                 <div class="mask">
@@ -55,7 +55,7 @@
                 } //end else if
                 else {
                     echo '
-                    <div style="padding-right: 0;" class="col l6 m6 s6">
+                    <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
                                 <div class="mask">
@@ -122,7 +122,7 @@
         } //end if
     ?>
 
-    <div style="background-image: url(http://www.mixalmebel.com.ua/wp-content/uploads/2014/10/reklama1.jpg);" class="col l12 m12 s12 hide advertisment"></div>
+    <div style="background-image: url(https://platform-news.com/wp-content/themes/platform-news/img/ad/reklama1.jpg);" class="col l12 m12 s12 hide advertisment"></div>
 </div>
 
 <div class="block-line container"></div>
