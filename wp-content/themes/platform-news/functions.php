@@ -39,13 +39,16 @@ function show_no_img_post() {
         <div class="news-time">
             <i class="material-icons"> access_time</i>' .
             get_the_time('j.m.Y') . '
-        </div>
+        </div><br>' . 
+        /*
         <div class="one-news-owner">
             <a href="#" class="hover-link">
-                <i class="material-icons">account_circle</i>' . 
+                <i class="material-icons">account_circle</i>
                 //get_the_author() . '
             '</a>
         </div>
+        */
+        '
         <div class="news-desc">
             <a href="' . get_the_permalink() . '" class="hover-link">' .
                 short_post_desc( 350 ) . '
@@ -67,7 +70,7 @@ function show_default_post( $display_img = null ) {
         <div class="news-time">
             <i class="material-icons">access_time</i>' .
             get_the_time('j.m.Y') . '
-        </div>
+        </div><br>
         ';
 
         if ( $display_img == true ) {

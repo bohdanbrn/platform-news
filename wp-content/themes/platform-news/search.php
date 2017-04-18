@@ -6,9 +6,7 @@
 	<div class="row container cat-block">
 		<div class="block-with-line">
 			<div class="big-sign-line cat-name">';
-                else {
                 	$search_ending = array('запис', 'записи', 'записів');
-                }
             echo '
             <span>Ви шукали: </span>' . $search_query . '</div>';
 			$results_number = $wp_query->found_posts;

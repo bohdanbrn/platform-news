@@ -45,7 +45,7 @@
 				margin-top: -50px;
 			}
 			.menu-item{
-				font-size: 17px;
+				font-size: 10px;
 				padding-left: 15px;
 			}
 			.menu-list{

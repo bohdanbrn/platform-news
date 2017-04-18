@@ -101,7 +101,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
     margin-top: -20px;
     position: relative;
     font-style: italic;
-    color: red;
+    color: #d82d19;
 }
 
 .header-sign-thrd{
@@ -114,7 +114,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .menu-item{
-    font-size: 25px;
+    font-size: 20px;
     padding-left: 35px;
     line-height: 2.1;
     margin: 0 auto;
@@ -149,7 +149,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .tabs .tab a:hover, .tabs .tab a.active {
-    color: red;
+    color: #d82d19;
 }
 
 .main-news{
@@ -182,7 +182,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
     position: absolute;
     color: #ececec;
 
-    background: #f90000;
+    background: #d82d19;
     padding-left: 5px;
     padding-right: 5px;
     top: 6px;
@@ -192,7 +192,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
     position: absolute;
     color: #ececec;
 
-    background: #f90000;
+    background: #d82d19;
     padding-left: 5px;
     padding-right: 5px;
     top: 6px;
@@ -306,7 +306,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 
 .news-owner-small{
     margin-top: -5px;
-    color: red;
+    color: #d82d19;
 }
 
 .small-news{
