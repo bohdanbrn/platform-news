@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>
+	<title> 
 		<?php
 			echo wp_get_document_title();
 		?>
@@ -15,25 +15,37 @@
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/media.css">
 
 	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<style>
 		/*mobile*/
 		@media screen and (max-width: 767px) {
 			.header-bg{
 				height: 100%;
 			}
+			  .box-title {
+
+    font-size: 15px;
+}
 			.container{
 				width: 100%;
+			}
+			.no-mob-pad{
+				padding-left: 0 !important; 
+				padding-right: 0 !important;
 			}
 			.advertisment{
 				max-height: 300px;
 			}
+			.news-title {
+    font-size: 20px;
+}
 			.lang {
 				top: auto;
+				right: 0;
 				margin-top: -50px;
 			}
 			.menu-item{
-				font-size: 17px;
+				font-size: 10px;
 				padding-left: 15px;
 			}
 			.menu-list{
@@ -59,10 +71,11 @@
 <body>
     <!-- header -->
     <div style="margin-bottom: 0;" class="row header-bg">
+    	<div class="container">
         <a href="<?php echo get_home_url(); ?>">
-            <div class="col l4 m6 s12 header-logo center"></div>
+            <div class="col l3 m6 s12 header-logo "></div>
         </a>
-        <div class="col l4 m6 s12 left float-for-mob">
+        <div class="col l5 m6 s12 left float-for-mob">
             <div class="header-sign-size">PLATFORM
                 <div class="header-sign-size header-sign-sec">NEWS</div>
             </div>
@@ -72,6 +85,7 @@
             <?php
                 get_search_form();
             ?>
+        </div>
         </div>
     </div>
     <!-- end of the header -->

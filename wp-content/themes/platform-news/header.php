@@ -77,7 +77,7 @@
 
 <body>
     <!-- header -->
-    <div style="margin-bottom: 0;" class="row  header-bg">
+    <div style="margin-bottom: 0;" class="row header-bg">
     <div class="container">
         <a href="<?php echo get_home_url(); ?>">
             <div class="col l3 m6 s12 header-logo "></div>

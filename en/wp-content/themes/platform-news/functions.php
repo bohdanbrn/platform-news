@@ -67,12 +67,6 @@ function show_default_post( $display_img = null ) {
         <div class="news-time">
             <i class="material-icons">access_time</i>' .
             get_the_time('j.m.Y') . '
-        </div>
-        <div class="one-news-owner">
-            <a href="' . get_author_posts_url( get_the_author_meta('ID') ) . '" class="hover-link">
-                <i class="material-icons">account_circle</i>' . 
-                //get_the_author() . '
-            '</a>
         </div>';
 
         if ( $display_img == true ) {

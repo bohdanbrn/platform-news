@@ -1,4 +1,4 @@
-<!-- top news block -->
+ <!-- top news block -->
 <div class="row container">
     <?php
         $args = array(
