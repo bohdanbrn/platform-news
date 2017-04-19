@@ -8,17 +8,16 @@
 	</title>
 	<meta charset="utf-8">
 	<!--Import Google Icon Font-->
-	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/media.css">
 
 	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<style>
 		/*mobile*/
-			/*mobile*/
 		@media screen and (max-width: 767px) {
 			.header-bg{
 				height: 100%;
@@ -67,20 +66,27 @@
 			}
 		}
 	</style>
-</head> 
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4847471792519024",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
 
 <body>
     <!-- header -->
     <div style="margin-bottom: 0;" class="row header-bg">
     <div class="container">
         <a href="<?php echo get_home_url(); ?>">
-            <div class="col l3 m6 s12 header-logo"></div>
+            <div class="col l3 m6 s12 header-logo "></div>
         </a>
         <div class="col l5 m6 s12 left float-for-mob">
             <div class="header-sign-size">PLATFORM
                 <div class="header-sign-size header-sign-sec">NEWS</div>
             </div>
-            <div class="header-sign-thrd">НОВИНИ В УКРАЇНІ ТА СВІТІ</div>
+            <div class="header-sign-thrd">НОВОСТИ В УКРАИНЕ И МИРЕ</div>
         </div>
         <div class="col l4 m9 s7">
             <?php
@@ -92,23 +98,8 @@
     <!-- end of the header -->
 
     <!-- navbar -->
-    <div class="lang right">
-        <div id="tabs-swipe-demo" class="tabs">
-            <!--
-            <form method="post" action="<?php echo get_home_url(); ?>">
-                <input type="hidden" name="ua" value="true">
-                <input type="submit" value="УКР">
-            </form>
-            <form method="post" action="<?php echo get_home_url(); ?>">
-                <input type="hidden" name="ru" value="true">
-                <input type="submit" value="РУС">
-            </form>
-            <form method="post" action="<?php echo get_home_url(); ?>">
-                <input type="hidden" name="en" value="true">
-                <input type="submit" value="ENG">
-            </form>
-            -->
-
+    <div class="lang right ">
+        <div id="tabs-swipe-demo" class="tabs ">
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/../">УКР</a></li>
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>" class="active">РУС</a></li>
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/../en">ENG</a></li>

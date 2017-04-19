@@ -6,18 +6,16 @@
 	<div class="row container cat-block">
 		<div class="block-with-line">
 			<div class="big-sign-line cat-name">';
-                else {
-                	$search_ending = array('запис', 'записи', 'записів');
-                }
+            $search_ending = array('post', 'posts', 'posts');
             echo '
-            <span>Ви шукали: </span>' . $search_query . '</div>';
+            <span>You searched: </span>' . $search_query . '</div>';
 			$results_number = $wp_query->found_posts;
 			$slovo = getNumEnding( $wp_query->found_posts, $search_ending );
 			if ( $results_number != 0 ) {
-				echo '<div class="search-num">По Вашому запиту знайдено ' . $results_number . ' ' . $slovo . '. </div>';
+				echo '<div class="search-num">Search results ' . $results_number . ' ' . $slovo . '. </div>';
 			}
 			else {
-				echo '<div class="search-num">За Вашим запитом нічого не знайдено</div>';
+				echo '<div class="search-num">Nothing found on your request</div>';
 			}
 			echo '
 			<div class="block-line"></div>

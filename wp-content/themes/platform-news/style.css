@@ -497,5 +497,12 @@ footer div {
 .page-numbers{
     margin: 7px;
 }
+
+.post-category{
+    margin-left: 5px;
+    padding: 1px 5px 1px 5px;
+    color: white;
+    background-color: #d82d19;
+}
 /* end pagination */
 

@@ -1,5 +1,6 @@
 <!--slider block -->
-<div class="row container slider-block">
+<!--наразі приховав -->
+<div class="row container slider-block hide">
     <div class="col l8 m7 center hide-on-small-only">
         <script src="<?php echo get_template_directory_uri(); ?>/js/init-slider.js" type="text/javascript"></script>
         <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:600px;height:300px;overflow:hidden;visibility:hidden;">

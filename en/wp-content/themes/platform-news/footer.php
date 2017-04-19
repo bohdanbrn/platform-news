@@ -1,9 +1,9 @@
     <footer>
         <div>Copyright © 2017 | by <a href="https://platform-it.com/"> Platform-It Company</a></div>
         <div>
-            Інтернет-портал Platform News самостійно не публікує жодних новин чи статей.
-            Стрічка новин, що розміщується на порталі Platform News, створюється автоматично та є підбіркою гіпертекстових посилань на інтернет-сторінки статей, опублікованих на різних інтернет-сайтах України та світу.
-            Посилання, що розміщуються у Стрічці новин, не слід розглядати як схвалення колективом інтернет-порталу Platform News поглядів, що висловлюються на відповідних інтернет-сторінках.
+            The Platform News Internet portal does not publish any news or articles on its own.
+            The news bulletin posted on the Platform News portal is created automatically and is a collection of hypertext links to Internet pages of articles published on various Internet sites in Ukraine and the world.
+            Links posted in the News Ribbon should not be considered as approval by the collective of the Internet portal Platform News views expressed on the relevant Internet pages.
         </div>
     </footer>
     <!--Import jQuery before materialize.js-->

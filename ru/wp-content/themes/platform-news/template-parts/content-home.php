@@ -21,8 +21,12 @@
                     echo '
                     <a href="' . get_the_permalink() . '" class="hover-link"> 
                         <div class="main-news" style="background-image: url(' . first_post_image() . ');">
-                            <div class="mask">
-                                <div class="news-owner">lorem ipsum</div>
+                            <div class="mask">';
+                                $category = get_the_category();
+                                if ( !empty( $category ) ) {
+                                    echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                }
+                                echo '
                                 <div class="news-content">
                                     <div class="box-title">
                                         <span class="hover-link">' . short_post_title(65) . '</span>
@@ -39,8 +43,12 @@
                     <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
-                                <div class="mask">
-                                    <div class="news-owner">lorem ipsum</div>
+                                <div class="mask">';
+                                    $category = get_the_category();
+                                    if ( !empty( $category ) ) {
+                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                    }
+                                    echo '
                                     <div class="news-content">
                                         <div class="box-title-small">
                                             <span class="hover-link">' . short_post_title(65) . '</span>
@@ -58,8 +66,12 @@
                     <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
-                                <div class="mask">
-                                    <div class="news-owner">lorem ipsum</div>
+                                <div class="mask">';
+                                    $category = get_the_category();
+                                    if ( !empty( $category ) ) {
+                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                    }
+                                    echo '
                                     <div class="news-content">
                                         <div class="box-title-small">
                                             <span class="hover-link">' . short_post_title(65) . '</span>
@@ -93,7 +105,7 @@
             echo '
             <div class="col l5 m5 s12">
                 <div class="block-with-line">
-                    <div class="big-sign-line">Популярне</div>
+                    <div class="big-sign-line">Популярное</div>
                     <div class="block-line"></div>
                 </div>';
                 while ( $query->have_posts() ) {
@@ -103,15 +115,22 @@
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="col l6 m6 s6">
                                 <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
-                                    <div class="mask">
-                                        <div class="news-owner news-owner-small-block">lorem ipsum</div>' .
+                                    <div class="mask">';
+                                        $category = get_the_category();
+                                        if ( !empty( $category ) ) {
+                                            echo '
+                                            <div class="news-owner news-owner-small-block">' . 
+                                                $category[0]->cat_name . '
+                                            </div>';
+                                        }
                                         //<div class="news-content">' . get_the_author() . '</div>
-                                    '</div>
+                                        echo '
+                                    </div>
                                 </div>
                             </div>
                             <div class="col l6 m6 s6">
                                 <div class="news-owner-small">' . short_post_title(40) . '</div>
-                                <div class="news-small-text">' . short_post_desc(150) . '</div>
+                                <div class="news-small-text">' . short_post_desc(90) . '</div>
                             </div>
                         </a>
                     </div>';
@@ -122,7 +141,7 @@
         } //end if
     ?>
 
-    <div style="background-image: url(http://www.mixalmebel.com.ua/wp-content/uploads/2014/10/reklama1.jpg);" class="col l12 m12 s12 hide advertisment"></div>
+    <div style="background-image: url(https://platform-news.com/wp-content/themes/platform-news/img/ad/reklama1.jpg);" class="col l12 m12 s12 hide advertisment"></div>
 </div>
 
 <div class="block-line container"></div>
@@ -135,7 +154,7 @@
         'posts_per_page' => 9,
         'paged' => ( get_query_var('paged') ) ? get_query_var('paged') : 1,
         'publish' => true,
-        //'post__not_in' => $display_posts, //displays all news, other than those
+        'post__not_in' => $display_posts, //displays all news, other than those
         'orderby' => 'date',
         'order' => 'DESC'
     );

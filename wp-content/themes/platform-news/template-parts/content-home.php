@@ -21,8 +21,12 @@
                     echo '
                     <a href="' . get_the_permalink() . '" class="hover-link"> 
                         <div class="main-news" style="background-image: url(' . first_post_image() . ');">
-                            <div class="mask">
-                                <div class="news-owner">lorem ipsum</div>
+                            <div class="mask">';
+                                $category = get_the_category();
+                                if ( !empty( $category ) ) {
+                                    echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                }
+                                echo '
                                 <div class="news-content">
                                     <div class="box-title">
                                         <span class="hover-link">' . short_post_title(65) . '</span>
@@ -39,8 +43,12 @@
                     <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
-                                <div class="mask">
-                                    <div class="news-owner">lorem ipsum</div>
+                                <div class="mask">';
+                                    $category = get_the_category();
+                                    if ( !empty( $category ) ) {
+                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                    }
+                                    echo '
                                     <div class="news-content">
                                         <div class="box-title-small">
                                             <span class="hover-link">' . short_post_title(65) . '</span>
@@ -58,8 +66,12 @@
                     <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
-                                <div class="mask">
-                                    <div class="news-owner">lorem ipsum</div>
+                                <div class="mask">';
+                                    $category = get_the_category();
+                                    if ( !empty( $category ) ) {
+                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                    }
+                                    echo '
                                     <div class="news-content">
                                         <div class="box-title-small">
                                             <span class="hover-link">' . short_post_title(65) . '</span>
@@ -103,10 +115,17 @@
                         <a href="' . get_the_permalink() . '" class="hover-link"> 
                             <div class="col l6 m6 s6">
                                 <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
-                                    <div class="mask">
-                                    <div class="news-owner news-owner-small-block">lorem ipsum</div>' .
+                                    <div class="mask">';
+                                        $category = get_the_category();
+                                        if ( !empty( $category ) ) {
+                                            echo '
+                                            <div class="news-owner news-owner-small-block">' . 
+                                                $category[0]->cat_name . '
+                                            </div>';
+                                        }
                                         //<div class="news-content">' . get_the_author() . '</div>
-                                    '</div>
+                                        echo '
+                                    </div>
                                 </div>
                             </div>
                             <div class="col l6 m6 s6">
@@ -135,7 +154,7 @@
         'posts_per_page' => 9,
         'paged' => ( get_query_var('paged') ) ? get_query_var('paged') : 1,
         'publish' => true,
-        //'post__not_in' => $display_posts, //displays all news, other than those
+        'post__not_in' => $display_posts, //displays all news, other than those
         'orderby' => 'date',
         'order' => 'DESC'
     );

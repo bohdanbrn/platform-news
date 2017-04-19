@@ -6,13 +6,13 @@
 	<div class="block-with-line ">
     	<div class="big-sign-line cat-name">
 			<?php
-				$search_ending = array('запис', 'записи', 'записів');
+				$search_ending = array('post', 'posts', 'posts');
 				$results_number = $wp_query->found_posts;
 				$slovo = getNumEnding( $query->found_posts, $search_ending );
 				single_cat_title();
 				echo '(' . $wp_query->found_posts . ' ' . $slovo . ')';
 				if  ( $results_number == 0 ) {
-					echo '<div class="tag-name-description">Публікацій за даною темою не знайдено</div>';
+					echo '<div class="tag-name-description">No publications found for this topic.</div>';
 				}
 			?>
 		</div>

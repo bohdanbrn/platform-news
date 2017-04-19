@@ -38,7 +38,7 @@
 					the_posts_pagination( $pagination_args );
 					wp_reset_postdata();
 				else :
-					echo '<div class="tag-name-description"> У даного автора немає публікацій </div>';
+					echo '<div class="tag-name-description">У даного автора немає публікацій </div>';
 				endif; //end if
 			?>
 		</div>
