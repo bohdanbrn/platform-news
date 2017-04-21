@@ -1,10 +1,16 @@
 <?php
-add_theme_support( 'post-thumbnails' ); // adds capabilities to create thumbnails for posts
+add_theme_support( 'post-thumbnails' );    // adds capabilities to create thumbnails for posts
 
-function short_post_desc( $charlength ) {        //function for display short content for posts
+function short_post_desc( $charlength, $post_id = null ) {  //function for display short content for posts
     //$excerpt = get_the_excerpt();
-    $excerpt = get_the_content();
-    $excerpt = strip_tags( $excerpt );
+    $excerpt = '';
+    if ( $post_id == null ) {
+        $excerpt = get_the_content( $post_id );
+    }
+    else {
+        $excerpt = get_post( $post_id )->post_content;;
+    }
+    $excerpt = strip_tags( $excerpt );     //removes HTML and PHP tags from a string
     if ( mb_strlen( $excerpt ) > $charlength ) {
         $subex = mb_substr( $excerpt, 0, $charlength );
         return $subex . '...';
@@ -14,11 +20,11 @@ function short_post_desc( $charlength ) {        //function for display short co
     }
 }
 
-function short_post_title( $charlength, $post_id = null ) {        //function for display short title for posts
+function short_post_title( $charlength, $post_id = null ) {    //function for display short title for posts
     $excerpt = get_the_title( $post_id );
     $excerpt = trim( $excerpt );
     if ( mb_strlen( $excerpt ) > $charlength ) {
-        $subex = mb_substr( $excerpt, 0, $charlength );
+        $subex = mb_substr( $excerpt, 0, $charlength, 'UTF-8' );
         return $subex . '...';
     }
     else {
@@ -59,12 +65,40 @@ function show_no_img_post() {
 }
 
 
+function show_img_post( $post_id = null ) {
+    echo '
+    <div class="row small-news">
+        <a href="' . get_the_permalink( $post_id ) . '" class="hover-link"> 
+            <div class="col l6 m6 s6">
+                <div class="main-news-small" style="background-image: url(' . first_post_image( $post_id ) . ');">
+                    <div class="mask">';
+                        $category = get_the_category( $post_id );
+                        if ( !empty( $category ) ) {
+                            echo '
+                            <div class="news-owner news-owner-small-block">' . 
+                                $category[0]->cat_name . '
+                            </div>';
+                        }
+                        //<div class="news-content">' . get_the_author() . '</div>
+                        echo '
+                    </div>
+                </div>
+            </div>
+            <div class="col l6 m6 s6">
+                <div class="news-owner-small">' . get_the_title( $post_id ) . '</div>
+                <div class="news-small-text">' . short_post_desc( 90, $post_id ) . '</div>
+            </div>
+        </a>
+    </div>';
+}
+
+
 function show_default_post( $display_img = null ) {
     echo '
     <div class="news-block">
         <div class="news-title">
             <a href="' . get_the_permalink() . '" class="hover-link"> ' .
-                short_post_title(120) . '
+                get_the_title() . '
             </a>
         </div>
         <div class="news-time">
@@ -97,6 +131,35 @@ function show_default_post( $display_img = null ) {
         <div class="news-block-line"></div>
     </div>';
 }
+
+
+// Вивід першої картинки з поста
+function first_post_image( $post_id = null ) {
+    $post = get_post( $post_id );
+    $first_img = '';
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    $first_img = $matches [1] [0];
+    if ( empty( $first_img ) ) { 
+        $first_img = false;
+    }
+    return $first_img;
+}
+/*
+// Вивід першої картинки з поста
+function first_post_image() {
+    global $post, $posts;
+    $first_img = '';
+    ob_start();
+    ob_end_clean();
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    $first_img = $matches [1] [0];
+    if( empty( $first_img ) ) {
+        // укажите путь к изображению, которое будет выводится по умолчанию. 
+        $first_img = "/wp-content/themes/platform-news/img/backgrounds/default.png";
+    }
+    return $first_img;
+}
+*/
 
 
 //pagination settings
@@ -146,22 +209,6 @@ function show_default_post( $display_img = null ) {
         return $ending; 
     } 
 //end algorithm declension of nouns after numerals
-
-
-// Вивід першої картинки з поста
-function first_post_image() {
-    global $post, $posts;
-    $first_img = '';
-    ob_start();
-    ob_end_clean();
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-    $first_img = $matches [1] [0];
-    if( empty( $first_img ) ) {
-        // укажите путь к изображению, которое будет выводится по умолчанию. 
-        $first_img = "/wp-content/themes/platform-news/img/backgrounds/default.png";
-    }
-    return $first_img;
-}
 
 
 // Відключити автоматичне оновлення ядра
