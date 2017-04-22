@@ -1,5 +1,10 @@
 # platform-news
 
+ver. 0.8.4
+  - укр. мова:
+    - AJAX-пагінація для головної сторінки(content-home.php, functions.php, loadmore.js)
+    - встановив плагін Cyr to Lat
+
 ver. 0.8.3
   - укр. мова:
     - виправив виведення записів без зображень на головній сторінці (content-home.php)

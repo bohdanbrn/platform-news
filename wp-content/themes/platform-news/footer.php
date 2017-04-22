@@ -17,5 +17,6 @@
             $('ul.tabs').tabs();
         });
     </script>
+    <?php wp_footer(); ?>
 </body>
 </html>

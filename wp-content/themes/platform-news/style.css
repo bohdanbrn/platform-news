@@ -454,55 +454,70 @@ footer div {
     margin: 0 auto;
 }
 
+
 /* pagination */
-.pagination{
-    background-color: rgba(255, 255, 255, 0.5);
-    width: auto;
-    height: auto;
-    right: auto;
-    padding-left: 0;
-    padding-right: 0;
-    position: static;
-    margin-top: 0px;
-    color:#000;
-    text-align: center;
-}
-.pagination a{
-    color:#000;
-}
+    .pagination{
+        background-color: rgba(255, 255, 255, 0.5);
+        width: auto;
+        height: auto;
+        right: auto;
+        padding-left: 0;
+        padding-right: 0;
+        position: static;
+        margin-top: 0px;
+        color:#000;
+        text-align: center;
+    }
+    .pagination a{
+        color:#000;
+    }
 
-.current {
-    background-color: #d82d19;
-    width: auto;
-    height: auto;
-    right: auto;
-    position: static;
-    margin: 7px;
-    color: white;
-    padding: 10px;
-    border-radius: 3px;
-}
-.prev{
-    font-weight: bolder;
-    color: #d82d19;
-    font-size: 25px; 
-}
+    .current {
+        background-color: #d82d19;
+        width: auto;
+        height: auto;
+        right: auto;
+        position: static;
+        margin: 7px;
+        color: white;
+        padding: 10px;
+        border-radius: 3px;
+    }
+    .prev{
+        font-weight: bolder;
+        color: #d82d19;
+        font-size: 25px; 
+    }
 
-.next{
-    font-weight: bolder;
-    color: #d82d19;
-    font-size: 25px; 
-}
+    .next{
+        font-weight: bolder;
+        color: #d82d19;
+        font-size: 25px; 
+    }
 
-.page-numbers{
-    margin: 7px;
-}
+    .page-numbers{
+        margin: 7px;
+    }
 
-.post-category{
-    margin-left: 5px;
-    padding: 1px 5px 1px 5px;
-    color: white;
-    background-color: #d82d19;
-}
+    .post-category{
+        margin-left: 5px;
+        padding: 1px 5px 1px 5px;
+        color: white;
+        background-color: #d82d19;
+    }
+
+
+    /*ajax pagination */
+    #loadmore{
+        background: #000; /* черный фон */
+        color: #FFF; /* белый цвет текста */
+        padding: 5px; /* отступы от границ 5px */
+        text-align: center; /* выравнивание текста по центру */
+        -moz-border-radius: 4px; 
+        -webkit-border-radius: 4px;
+        border-radius: 4px; /* закругление углов */
+        margin: 20px 0; /* отступы сверху и снизу от кнопки */
+        cursor:pointer; /* курсор мыши при наведении такой же, как при наведении на ссылку */
+    }
+
 /* end pagination */
-

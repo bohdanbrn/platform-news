@@ -22,12 +22,11 @@
 			.header-bg{
 				height: 100%;
 			}
-			  .box-title {
-
-    font-size: 15px;
-}
+			.box-title {
+                font-size: 15px;
+            }
 			.container{
-				width: 100%;
+			    width: 100%;
 			}
 			.no-mob-pad{
 				padding-left: 0 !important; 
@@ -37,8 +36,8 @@
 				max-height: 300px;
 			}
 			.news-title {
-    font-size: 20px;
-}
+                font-size: 20px;
+            }
 			.lang {
 				top: auto;
 				right: 0;
@@ -67,32 +66,33 @@
 		}
 	</style>
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4847471792519024",
-    enable_page_level_ads: true
-  });
-</script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-4847471792519024",
+            enable_page_level_ads: true
+        });
+    </script>
+    <?php wp_head(); ?>
 </head>
 
 <body>
     <!-- header -->
     <div style="margin-bottom: 0;" class="row header-bg">
-    <div class="container">
-        <a href="<?php echo get_home_url(); ?>">
-            <div class="col l3 m6 s12 header-logo "></div>
-        </a>
-        <div class="col l5 m6 s12 left float-for-mob">
-            <div class="header-sign-size">PLATFORM
-                <div class="header-sign-size header-sign-sec">NEWS</div>
+        <div class="container">
+            <a href="<?php echo get_home_url(); ?>">
+                <div class="col l3 m6 s12 header-logo "></div>
+            </a>
+            <div class="col l5 m6 s12 left float-for-mob">
+                <div class="header-sign-size">PLATFORM
+                    <div class="header-sign-size header-sign-sec">NEWS</div>
+                </div>
+                <div class="header-sign-thrd">НОВИНИ В УКРАЇНІ ТА СВІТІ</div>
             </div>
-            <div class="header-sign-thrd">НОВИНИ В УКРАЇНІ ТА СВІТІ</div>
-        </div>
-        <div class="col l4 m9 s7">
-            <?php
-                get_search_form();
-            ?>
-        </div>
+            <div class="col l4 m9 s7">
+                <?php
+                    get_search_form();
+                ?>
+            </div>
         </div>
     </div>
     <!-- end of the header -->
@@ -100,21 +100,6 @@
     <!-- navbar -->
     <div class="lang right ">
         <div id="tabs-swipe-demo" class="tabs ">
-            <!--
-            <form method="post" action="<?php echo get_home_url(); ?>">
-                <input type="hidden" name="ua" value="true">
-                <input type="submit" value="УКР">
-            </form>
-            <form method="post" action="<?php echo get_home_url(); ?>">
-                <input type="hidden" name="ru" value="true">
-                <input type="submit" value="РУС">
-            </form>
-            <form method="post" action="<?php echo get_home_url(); ?>">
-                <input type="hidden" name="en" value="true">
-                <input type="submit" value="ENG">
-            </form>
-            -->
-
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>" class="active">УКР</a></li>
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/ru">РУС</a></li>
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/en">ENG</a></li>

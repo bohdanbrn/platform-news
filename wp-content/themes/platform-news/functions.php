@@ -39,7 +39,7 @@ function show_no_img_post() {
     <div class="news-block">
         <div class="news-title">
             <a href="' . get_the_permalink() . '" class="hover-link">' .
-                short_post_title(100) . '
+                get_the_title() . '
             </a>
         </div>
         <div class="news-time">
@@ -225,5 +225,42 @@ function order_posts_in_admin_by_id( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'order_posts_in_admin_by_id' );
+
+
+//ajax pagination
+    function true_loadmore_scripts() {
+        wp_enqueue_script('jquery'); // скорее всего он уже будет подключен, это на всякий случай
+        wp_enqueue_script( 'true_loadmore', get_stylesheet_directory_uri() . '/js/loadmore.js', array('jquery') );
+    }
+    add_action( 'wp_enqueue_scripts', 'true_loadmore_scripts' );
+
+    function true_load_posts() {
+        var_dump($wp_query);
+        $args = unserialize(stripslashes($_POST['query']));
+        $args['paged'] = $_POST['page'] + 1; // следующая страница
+        $args['post_status'] = 'publish';
+        $q = new WP_Query( $args );
+        if( $q->have_posts() ) {
+            $post_count = 0;
+            while( $q->have_posts() ) {
+                $q->the_post();
+                $post_img = first_post_image( $post->ID ); //повертає false якщо дний пост не містить зображення
+                //якщо даний пост виводиться третім або більше по порядку та містить зобрадення
+                if ( $post_count >= 2 && $post_img ) {
+                    show_default_post( true );
+                    $post_count = 0;
+                }
+                else {
+                    show_default_post();
+                    $post_count++;
+                }
+            } //end while
+        } //end if
+        wp_reset_postdata();
+        die();
+    }
+    add_action('wp_ajax_loadmore', 'true_load_posts');
+    add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');
+//end ajax pagination
 
 ?>
