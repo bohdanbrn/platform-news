@@ -235,7 +235,6 @@ add_action( 'pre_get_posts', 'order_posts_in_admin_by_id' );
     add_action( 'wp_enqueue_scripts', 'true_loadmore_scripts' );
 
     function true_load_posts() {
-        var_dump($wp_query);
         $args = unserialize(stripslashes($_POST['query']));
         $args['paged'] = $_POST['page'] + 1; // следующая страница
         $args['post_status'] = 'publish';
@@ -262,5 +261,24 @@ add_action( 'pre_get_posts', 'order_posts_in_admin_by_id' );
     add_action('wp_ajax_loadmore', 'true_load_posts');
     add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');
 //end ajax pagination
+
+
+//sidebar
+    function true_register_wp_sidebars() {
+        /* В боковой колонке - первый сайдбар */
+        register_sidebar(
+            array(
+                'id' => 'true_side', // уникальный id
+                'name' => 'Бічна колонка', // название сайдбара
+                'description' => 'Перетягніть сюди віджети, щоб додати їх в сайдбар.', // описание
+                'before_widget' => '<div id="%1$s" class="side widget %2$s">', // по умолчанию виджеты выводятся <li>-списком
+                'after_widget' => '</div>',
+                'before_title' => '<h3 class="widget-title">', // по умолчанию заголовки виджетов в <h2>
+                'after_title' => '</h3>'
+            )
+        );
+    }
+    add_action( 'widgets_init', 'true_register_wp_sidebars' );
+//end sidebar
 
 ?>

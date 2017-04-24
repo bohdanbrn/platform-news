@@ -1,7 +1,22 @@
 <!-- top news block -->
 <div class="row container">
     <?php
-        $result = $wpdb->get_results( 'SELECT id, post_content, post_title FROM ua_posts WHERE post_type = "post" AND post_content LIKE "%<img %" ORDER BY post_date DESC LIMIT 8' );
+        $posts_year = $wp_query->query[year];
+        $posts_month = $wp_query->query[monthnum];
+        $posts_day = $wp_query->query[day];
+        
+        //default sql-query
+        $sql = 'SELECT id, post_content, post_title FROM ua_posts WHERE post_type = "post" AND post_content LIKE "%<img %" ORDER BY post_date DESC LIMIT 8';
+        
+        //if date was passed
+        if ( $wp_query->query ) {
+            if ( $posts_year && $posts_month && $posts_day ) {
+                //change default sql-request
+                $sql = 'SELECT id, post_content, post_title FROM ua_posts WHERE post_type = "post" AND ( ( YEAR( ua_posts.post_date ) =' . $posts_year . ' AND MONTH( ua_posts.post_date ) =' . $posts_month . ' AND DAYOFMONTH( ua_posts.post_date ) =' . $posts_day . ' ) ) AND post_content LIKE "%<img %" ORDER BY post_date DESC LIMIT 8';
+            }
+        }
+        global $wpdb;
+        $result = $wpdb->get_results( $sql );
         global $display_posts;		//variable to prevent duplicate posts
 		$display_posts = array();
         if ( empty( $result ) ) {
@@ -117,6 +132,9 @@
         'post_type' => array('post'),
         'posts_per_page' => 9,
         'paged' => ( get_query_var('paged') ) ? get_query_var('paged') : 1,
+        'year' => $posts_year,
+        'monthnum' => $posts_month,
+        'day' => $posts_day,
         'publish' => true,
         'post__not_in' => $display_posts, //displays all news, other than those
         'orderby' => 'date',

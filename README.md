@@ -1,8 +1,14 @@
 # platform-news
 
+ver. 0.8.5
+  - укр. мова:
+    - підключив sidebar до wordpress (functions.php, sidebar.php)
+    - підключив і налаштував календар (content-home.php)
+    - закоментував скріпти з рекламою (header.php)
+
 ver. 0.8.4
   - укр. мова:
-    - AJAX-пагінація для головної сторінки(content-home.php, functions.php, loadmore.js)
+    - AJAX-пагінація для головної сторінки (content-home.php, functions.php, loadmore.js)
     - встановив плагін Cyr to Lat
 
 ver. 0.8.3
