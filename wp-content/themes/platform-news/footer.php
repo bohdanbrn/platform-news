@@ -1,10 +1,11 @@
     <footer>
-        <div>Copyright © 2017 | by <a href="https://platform-it.com/"> Platform-It Company</a></div>
+        
         <div>
             Інтернет-портал Platform News самостійно не публікує жодних новин чи статей.
             Стрічка новин, що розміщується на порталі Platform News, створюється автоматично та є підбіркою гіпертекстових посилань на інтернет-сторінки статей, опублікованих на різних інтернет-сайтах України та світу.
             Посилання, що розміщуються у Стрічці новин, не слід розглядати як схвалення колективом інтернет-порталу Platform News поглядів, що висловлюються на відповідних інтернет-сторінках.
         </div>
+        <div>Copyright © 2017 | by <a href="https://platform-it.com/"> Platform-It Company</a></div>
     </footer>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -17,6 +18,14 @@
             $('ul.tabs').tabs();
         });
     </script>
+<script>
+$(function shorting_news () {
+    nShort = $(".news-owner-small")
+    nShort.each(function (shortme) {
+        $(this).replaceWith("<span id='short-id"+shortme+"' class='news-owner-small'>" + $(this).text().substr(0,60) + "&hellip;</span>");
+    });
+});
+</script>
     <?php wp_footer(); ?>
 </body>
 </html>

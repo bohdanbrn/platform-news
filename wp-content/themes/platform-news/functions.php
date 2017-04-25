@@ -38,7 +38,7 @@ function show_no_img_post() {
     echo '
     <div class="news-block">
         <div class="news-title">
-            <a href="' . get_the_permalink() . '" class="hover-link">' .
+            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link">' .
                 get_the_title() . '
             </a>
         </div>
@@ -48,7 +48,7 @@ function show_no_img_post() {
         </div><br>';
         /*
         <div class="one-news-owner">
-            <a href="#" class="hover-link">
+            <a target="_blank"href="#" class="hover-link">
                 <i class="material-icons">account_circle</i>
                 //get_the_author() . '
             '</a>
@@ -56,7 +56,7 @@ function show_no_img_post() {
         */
         echo '
         <div class="news-desc">
-            <a href="' . get_the_permalink() . '" class="hover-link">' .
+            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link">' .
                 short_post_desc( 350 ) . '
             </a>
         </div>
@@ -68,24 +68,30 @@ function show_no_img_post() {
 function show_img_post( $post_id = null ) {
     echo '
     <div class="row small-news">
-        <a href="' . get_the_permalink( $post_id ) . '" class="hover-link"> 
+        <a target="_blank"href="' . get_the_permalink( $post_id ) . '" class="hover-link"> 
             <div class="col l6 m6 s6">
-                <div class="main-news-small" style="background-image: url(' . first_post_image( $post_id ) . ');">
+                <div class="main-news-small" >
+                  <img class="img-effect" src=' . first_post_image( $post_id ) . ' alt="img21">
                     <div class="mask">';
                         $category = get_the_category( $post_id );
                         if ( !empty( $category ) ) {
                             echo '
-                            <div class="news-owner news-owner-small-block">' . 
+                            <div class="news-owner news-owner-small-block"><a href="#" class="no-style">' . 
                                 $category[0]->cat_name . '
-                            </div>';
+                            </a></div>';
                         }
-                        //<div class="news-content">' . get_the_author() . '</div>
-                        echo '
+
+                        echo ' 
+                        <div class="news-content">
+
+                                    <div class="box-title-fot fix-desc-text">' . get_the_time( 'j.m.Y' ) . '</div>' .
+                                    //<div class="box-title-fot-sec">' . get_the_author() . '</div>
+                                '</div>
                     </div>
                 </div>
             </div>
             <div class="col l6 m6 s6">
-                <div class="news-owner-small">' . get_the_title( $post_id ) . '</div>
+                <div id="long_text" class="news-owner-small">' . get_the_title( $post_id ) . '</div>
                 <div class="news-small-text">' . short_post_desc( 90, $post_id ) . '</div>
             </div>
         </a>
@@ -97,34 +103,34 @@ function show_default_post( $display_img = null ) {
     echo '
     <div class="news-block">
         <div class="news-title">
-            <a href="' . get_the_permalink() . '" class="hover-link"> ' .
+            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link"> ' .
                 get_the_title() . '
             </a>
         </div>
         <div class="news-time">
-            <i class="material-icons">access_time</i>' .
+            ' .
             get_the_time('j.m.Y') . '
         </div>';
         
         $category = get_the_category();
         if ( !empty( $category ) ) {
             echo '
-            <span class="post-category">' .
-                $category[0]->cat_name . '
+            <span class="post-category"><a href="#" class="no-style">' .
+                $category[0]->cat_name . '</a>
             </span>';
         }
 
         if ( $display_img == true ) {
             echo '
             <br>
-            <a href="' . get_the_permalink() . '" class="hover-link"> 
+            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link"> 
                 <img class="news-img" src="' . first_post_image() . '" alt="news image">
             </a>';
         }
 
         echo '
         <div class="news-desc">
-            <a href="' . get_the_permalink() . '" class="hover-link">' .
+            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link">' .
                 short_post_desc(450) . '
             </a>
         </div>

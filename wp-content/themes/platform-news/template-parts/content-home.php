@@ -30,17 +30,18 @@
             for ( $i = 0; $i < 3; $i++ ) {
                 if ( $post_count == 0 ) {
                     echo '
-                    <a href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
-                        <div class="main-news" style="background-image: url(' . first_post_image( $result[$i]->id ) . ');">
-                            <div class="mask">';
+                    <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
+                        <div class="main-news">
+                        <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
+                            <div class="">';
                                 $category = get_the_category( $result[$i]->id );
                                 if ( !empty( $category ) ) {
-                                    echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                    echo '<div class="news-owner"><a href="#" class="no-style">' . $category[0]->cat_name . '</a></div>';
                                 }
                                 echo '
                                 <div class="news-content">
                                     <div class="box-title">
-                                        <span class="hover-link">' . get_the_title( $result[$i]->id ) . '</span>
+                                        <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
                                     </div>
                                     <div class="box-title-fot">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
                                     //<div class="box-title-fot-sec">' . get_the_author() . '</div>
@@ -52,17 +53,18 @@
                 else if ( $post_count == 1 ) {
                     echo '
                     <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">
-                        <a href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
-                            <div class="main-news-sec" style="background-image: url(' . first_post_image( $result[$i]->id ) . ');">
-                                <div class="mask">';
+                        <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main"> 
+                            <div class="main-news-sec">
+                             <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
+                                <div class="">';
                                     $category = get_the_category( $result[$i]->id );
                                     if ( !empty( $category ) ) {
-                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                        echo '<div class="news-owner"><a  class="no-style" href="#">' . $category[0]->cat_name . '</a></div>';
                                     }
                                     echo '
                                     <div class="news-content">
                                         <div class="box-title-small">
-                                            <span class="hover-link">' . get_the_title( $result[$i]->id ) . '</span>
+                                            <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
                                         </div>
                                         <div class="box-title-fot-small">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
                                         //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
@@ -75,17 +77,18 @@
                 else {
                     echo '
                     <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">
-                        <a href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
-                            <div class="main-news-sec" style="background-image: url(' . first_post_image( $result[$i]->id ) . ');">
-                                <div class="mask">';
+                        <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main"> 
+                            <div class="main-news-sec">
+                             <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
+                                <div class="">';
                                     $category = get_the_category( $result[$i]->id );
                                     if ( !empty( $category ) ) {
-                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
+                                        echo '<div class="news-owner"><a class="no-style" href="#">' . $category[0]->cat_name . '</a></div>';
                                     }
                                     echo '
                                     <div class="news-content">
                                         <div class="box-title-small">
-                                            <span class="hover-link">' . get_the_title( $result[$i]->id ) . '</span>
+                                            <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
                                         </div>
                                         <div class="box-title-fot-small">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
                                         //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
@@ -106,10 +109,7 @@
             $post_count = 0;
             echo '
             <div class="col l5 m5 s12">
-                <div class="block-with-line">
-                    <div class="big-sign-line">Популярне</div>
-                    <div class="block-line"></div>
-                </div>';
+                ';
                 for ( $i = 3; $i < count( $result ); $i++ ) {
                     show_img_post( $result[$i]->id );
                 }
