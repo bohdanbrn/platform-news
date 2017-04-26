@@ -33,37 +33,31 @@ function short_post_title( $charlength, $post_id = null ) {    //function for di
 }
 
 
-//template for posts on tag.php, category.php, search.php, author.php
-function show_no_img_post() {
+function show_sec_main_news( $result, $i ) {
     echo '
-    <div class="news-block">
-        <div class="news-title">
-            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link">' .
-                get_the_title() . '
-            </a>
+    <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main"> 
+        <div class="main-news-sec">
+            <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
+            <div>';
+                $category = get_the_category( $result[$i]->id );
+                if ( !empty( $category ) ) {
+                    echo '
+                    <div class="news-owner">
+                        <a href="#" class="no-style">' . $category[0]->cat_name . '</a>
+                    </div>';
+                }
+                echo '
+                <div class="news-content">
+                    <div class="box-title-small">
+                        <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
+                    </div>
+                    <div class="box-title-fot-small">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
+                    //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
+                '</div>
+            </div>
         </div>
-        <div class="news-time">
-            <i class="material-icons"> access_time</i>' .
-            get_the_time('j.m.Y') . '
-        </div><br>';
-        /*
-        <div class="one-news-owner">
-            <a target="_blank"href="#" class="hover-link">
-                <i class="material-icons">account_circle</i>
-                //get_the_author() . '
-            '</a>
-        </div>
-        */
-        echo '
-        <div class="news-desc">
-            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link">' .
-                short_post_desc( 350 ) . '
-            </a>
-        </div>
-        <div class="news-block-line"></div>
-    </div>';
+    </a>';
 }
-
 
 function show_img_post( $post_id = null ) {
     echo '
@@ -71,22 +65,22 @@ function show_img_post( $post_id = null ) {
         <a target="_blank"href="' . get_the_permalink( $post_id ) . '" class="hover-link"> 
             <div class="col l6 m6 s6">
                 <div class="main-news-small" >
-                  <img class="img-effect" src=' . first_post_image( $post_id ) . ' alt="img21">
+                    <img class="img-effect" src=' . first_post_image( $post_id ) . ' alt="img21">
                     <div class="mask">';
                         $category = get_the_category( $post_id );
                         if ( !empty( $category ) ) {
                             echo '
-                            <div class="news-owner news-owner-small-block"><a href="#" class="no-style">' . 
-                                $category[0]->cat_name . '
-                            </a></div>';
+                            <div class="news-owner news-owner-small-block">
+                                <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' . 
+                                    $category[0]->cat_name . '
+                                </a>
+                            </div>';
                         }
-
                         echo ' 
                         <div class="news-content">
-
-                                    <div class="box-title-fot fix-desc-text">' . get_the_time( 'j.m.Y' ) . '</div>' .
-                                    //<div class="box-title-fot-sec">' . get_the_author() . '</div>
-                                '</div>
+                            <div class="box-title-fot fix-desc-text">' . get_the_time( 'j.m.Y' ) . '</div>' .
+                            //<div class="box-title-fot-sec">' . get_the_author() . '</div>
+                        '</div>
                     </div>
                 </div>
             </div>
@@ -107,23 +101,21 @@ function show_default_post( $display_img = null ) {
                 get_the_title() . '
             </a>
         </div>
-        <div class="news-time">
-            ' .
-            get_the_time('j.m.Y') . '
-        </div>';
-        
+        <div class="news-time">' . get_the_time('j.m.Y') . '</div>';
         $category = get_the_category();
         if ( !empty( $category ) ) {
             echo '
-            <span class="post-category"><a href="#" class="no-style">' .
-                $category[0]->cat_name . '</a>
+            <span class="post-category">
+                <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' .
+                    $category[0]->cat_name . '
+                </a>
             </span>';
         }
 
         if ( $display_img == true ) {
             echo '
             <br>
-            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link"> 
+            <a target="_blank" href="' . get_the_permalink() . '" class="hover-link"> 
                 <img class="news-img" src="' . first_post_image() . '" alt="news image">
             </a>';
         }
@@ -150,22 +142,6 @@ function first_post_image( $post_id = null ) {
     }
     return $first_img;
 }
-/*
-// Вивід першої картинки з поста
-function first_post_image() {
-    global $post, $posts;
-    $first_img = '';
-    ob_start();
-    ob_end_clean();
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-    $first_img = $matches [1] [0];
-    if( empty( $first_img ) ) {
-        // укажите путь к изображению, которое будет выводится по умолчанию. 
-        $first_img = "/wp-content/themes/platform-news/img/backgrounds/default.png";
-    }
-    return $first_img;
-}
-*/
 
 
 //pagination settings
@@ -192,7 +168,7 @@ function first_post_image() {
             h1 a { background-image:url(' . get_template_directory_uri() .'/img/logo/logo.svg) !important;}
         </style>';
     }
-    add_action('login_head', 'my_custom_login_logo');
+    add_action( 'login_head', 'my_custom_login_logo' );
 //end custom login form
 
 
@@ -220,7 +196,7 @@ function first_post_image() {
 // Відключити автоматичне оновлення ядра
 define( 'WP_AUTO_UPDATE_CORE', false );
 add_filter( 'pre_site_transient_update_core', create_function('$a', "return null;") );
-wp_clear_scheduled_hook('wp_version_check');
+wp_clear_scheduled_hook( 'wp_version_check' );
 
 
 //сортування записів по даті в адмінці
@@ -245,9 +221,9 @@ add_action( 'pre_get_posts', 'order_posts_in_admin_by_id' );
         $args['paged'] = $_POST['page'] + 1; // следующая страница
         $args['post_status'] = 'publish';
         $q = new WP_Query( $args );
-        if( $q->have_posts() ) {
+        if ( $q->have_posts() ) {
             $post_count = 0;
-            while( $q->have_posts() ) {
+            while ( $q->have_posts() ) {
                 $q->the_post();
                 $post_img = first_post_image( $post->ID ); //повертає false якщо дний пост не містить зображення
                 //якщо даний пост виводиться третім або більше по порядку та містить зобрадення

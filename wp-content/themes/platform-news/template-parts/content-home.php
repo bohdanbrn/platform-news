@@ -24,19 +24,23 @@
         }
         else {
             //show left block
-            $post_count = 0;
             echo '
             <div class="col l7 m7 s12">';
             for ( $i = 0; $i < 3; $i++ ) {
-                if ( $post_count == 0 ) {
+                if ( $i == 0 ) {
                     echo '
-                    <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
+                    <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
                         <div class="main-news">
-                        <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
-                            <div class="">';
+                            <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
+                            <div>';
                                 $category = get_the_category( $result[$i]->id );
                                 if ( !empty( $category ) ) {
-                                    echo '<div class="news-owner"><a href="#" class="no-style">' . $category[0]->cat_name . '</a></div>';
+                                    echo '
+                                    <div class="news-owner">
+                                        <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' . 
+                                            $category[0]->cat_name . '
+                                        </a>
+                                    </div>';
                                 }
                                 echo '
                                 <div class="news-content">
@@ -50,73 +54,35 @@
                         </div>
                     </a>';
                 } //end if
-                else if ( $post_count == 1 ) {
+                else if ( $i == 1 ) {
                     echo '
-                    <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">
-                        <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main"> 
-                            <div class="main-news-sec">
-                             <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
-                                <div class="">';
-                                    $category = get_the_category( $result[$i]->id );
-                                    if ( !empty( $category ) ) {
-                                        echo '<div class="news-owner"><a  class="no-style" href="#">' . $category[0]->cat_name . '</a></div>';
-                                    }
-                                    echo '
-                                    <div class="news-content">
-                                        <div class="box-title-small">
-                                            <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
-                                        </div>
-                                        <div class="box-title-fot-small">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
-                                        //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
-                                    '</div>
-                                </div>
-                            </div>
-                        </a>
+                    <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">';
+                        show_sec_main_news( $result, $i );
+                        echo '
                     </div>';
                 }
                 else {
                     echo '
-                    <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">
-                        <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main"> 
-                            <div class="main-news-sec">
-                             <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
-                                <div class="">';
-                                    $category = get_the_category( $result[$i]->id );
-                                    if ( !empty( $category ) ) {
-                                        echo '<div class="news-owner"><a class="no-style" href="#">' . $category[0]->cat_name . '</a></div>';
-                                    }
-                                    echo '
-                                    <div class="news-content">
-                                        <div class="box-title-small">
-                                            <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
-                                        </div>
-                                        <div class="box-title-fot-small">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
-                                        //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
-                                    '</div>
-                                </div>
-                            </div>
-                        </a>
+                    <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">';
+                        show_sec_main_news( $result, $i );
+                        echo '
                     </div>';
                 } //end else
                 $display_posts[] = $result[$i]->id;
-                $post_count++;
             } //end for
             echo '
             </div>'; 
 
 
             //show right block
-            $post_count = 0;
             echo '
-            <div class="col l5 m5 s12">
-                ';
+            <div class="col l5 m5 s12">';
                 for ( $i = 3; $i < count( $result ); $i++ ) {
                     show_img_post( $result[$i]->id );
-                }
+                    $display_posts[] = $result[$i]->id;
+                } //end for
                 echo '
-            </div>';
-            $display_posts[] = $result[$i]->id;
-            $post_count++;
+            </div>';         
         } //end else
     ?>
 
