@@ -22,7 +22,7 @@
 $(function shorting_news () {
     nShort = $(".news-owner-small")
     nShort.each(function (shortme) {
-        $(this).replaceWith("<span id='short-id"+shortme+"' class='news-owner-small'>" + $(this).text().substr(0,60) + "&hellip;</span>");
+        $(this).replaceWith("<span id='short-id"+shortme+"' class='news-owner-small'>" + $(this).text().substr(0,50) + "&hellip;</span>");
     });
 });
 </script>

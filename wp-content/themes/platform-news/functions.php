@@ -35,9 +35,11 @@ function short_post_title( $charlength, $post_id = null ) {    //function for di
 
 function show_sec_main_news( $result, $i ) {
     echo '
-    <a target="_blank"href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main"> 
+    
         <div class="main-news-sec">
-            <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
+            <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main"> 
+                <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="' . get_the_title( $result[$i]->id ) . '">
+            </a>
             <div>';
                 $category = get_the_category( $result[$i]->id );
                 if ( !empty( $category ) ) {
@@ -48,47 +50,50 @@ function show_sec_main_news( $result, $i ) {
                 }
                 echo '
                 <div class="news-content">
-                    <div class="box-title-small">
-                        <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
-                    </div>
+                    <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link-main no-style"> 
+                        <div class="box-title-small">
+                            <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
+                        </div>
+                    </a>
                     <div class="box-title-fot-small">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
                     //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
                 '</div>
             </div>
-        </div>
-    </a>';
+        </div>';
 }
 
 function show_img_post( $post_id = null ) {
     echo '
     <div class="row small-news">
-        <a target="_blank"href="' . get_the_permalink( $post_id ) . '" class="hover-link"> 
-            <div class="col l6 m6 s6">
-                <div class="main-news-small" >
-                    <img class="img-effect" src=' . first_post_image( $post_id ) . ' alt="img21">
-                    <div class="mask">';
-                        $category = get_the_category( $post_id );
-                        if ( !empty( $category ) ) {
-                            echo '
-                            <div class="news-owner news-owner-small-block">
-                                <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' . 
-                                    $category[0]->cat_name . '
-                                </a>
-                            </div>';
-                        }
-                        echo ' 
-                        <div class="news-content">
-                            <div class="box-title-fot fix-desc-text">' . get_the_time( 'j.m.Y' ) . '</div>' .
-                            //<div class="box-title-fot-sec">' . get_the_author() . '</div>
-                        '</div>
-                    </div>
+        <div  class="col l6 m6 s6">
+            <div class="main-news-small" >
+                <a target="_blank" href="' . get_the_permalink( $post_id ) . '" class="hover-link"> 
+                    <img class="img-effect" src=' . first_post_image( $post_id ) . ' alt="' . get_the_title( $post_id ) . '">
+                </a>
+                <div class="">';
+                    $category = get_the_category( $post_id );
+                    if ( !empty( $category ) ) {
+                        echo '
+                        <div class="news-owner news-owner-small-block">
+                            <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' . 
+                                $category[0]->cat_name . '
+                            </a>
+                        </div>';
+                    }
+                    echo ' 
+                    <div class="news-content">
+                        <div class="box-title-fot fix-desc-text">' . get_the_time( 'j.m.Y' ) . '</div>' .
+                        //<div class="box-title-fot-sec">' . get_the_author() . '</div>
+                    '</div>
                 </div>
             </div>
-            <div class="col l6 m6 s6">
-                <div id="long_text" class="news-owner-small">' . get_the_title( $post_id ) . '</div>
+        </div>
+        <div style="padding-right: 0;" class="col l6 m6 s6">
+            <a target="_blank" href="' . get_the_permalink( $post_id ) . '" class="hover-link">
+                <div  class="news-owner-small">' . get_the_title( $post_id ) . '</div>
                 <div class="news-small-text">' . short_post_desc( 90, $post_id ) . '</div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>';
 }
 
@@ -97,7 +102,7 @@ function show_default_post( $display_img = null ) {
     echo '
     <div class="news-block">
         <div class="news-title">
-            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link"> ' .
+            <a target="_blank" href="' . get_the_permalink() . '" class="hover-link"> ' .
                 get_the_title() . '
             </a>
         </div>
@@ -116,13 +121,15 @@ function show_default_post( $display_img = null ) {
             echo '
             <br>
             <a target="_blank" href="' . get_the_permalink() . '" class="hover-link"> 
-                <img class="news-img" src="' . first_post_image() . '" alt="news image">
+                <div class="effect-container">
+                <img class=" img-effect-small" src="' . first_post_image() . '" alt="' . get_the_title() . '">
+                </div>
             </a>';
         }
 
         echo '
         <div class="news-desc">
-            <a target="_blank"href="' . get_the_permalink() . '" class="hover-link">' .
+            <a target="_blank" href="' . get_the_permalink() . '" class="hover-link">' .
                 short_post_desc(450) . '
             </a>
         </div>

@@ -29,30 +29,33 @@
             for ( $i = 0; $i < 3; $i++ ) {
                 if ( $i == 0 ) {
                     echo '
-                    <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
-                        <div class="main-news">
-                            <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="img21">
-                            <div>';
-                                $category = get_the_category( $result[$i]->id );
-                                if ( !empty( $category ) ) {
-                                    echo '
-                                    <div class="news-owner">
-                                        <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' . 
-                                            $category[0]->cat_name . '
-                                        </a>
-                                    </div>';
-                                }
+                    <div class="main-news">
+                        <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
+                            <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="' . get_the_title( $result[$i]->id ) . '">
+                        </a>
+                        <div>';
+                            $category = get_the_category( $result[$i]->id );
+                            if ( !empty( $category ) ) {
                                 echo '
+                                <div class="news-owner">
+                                    <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' . 
+                                        $category[0]->cat_name . '
+                                    </a>
+                                </div>';
+                            }
+                            echo '
+                            <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
                                 <div class="news-content">
                                     <div class="box-title">
                                         <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
                                     </div>
                                     <div class="box-title-fot">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
-                                    //<div class="box-title-fot-sec">' . get_the_author() . '</div>
+                                //<div class="box-title-fot-sec">' . get_the_author() . '</div>
                                 '</div>
-                            </div>
+                            </a>
                         </div>
-                    </a>';
+                    </div>';
+
                 } //end if
                 else if ( $i == 1 ) {
                     echo '
@@ -76,7 +79,7 @@
 
             //show right block
             echo '
-            <div class="col l5 m5 s12">';
+            <div  class="col l5 m5 s12">';
                 for ( $i = 3; $i < count( $result ); $i++ ) {
                     show_img_post( $result[$i]->id );
                     $display_posts[] = $result[$i]->id;
@@ -135,7 +138,8 @@
                         var current_page = <?php echo ( get_query_var('paged') ) ? get_query_var('paged') : 1; ?>;
                         var max_pages = '<?php echo $query->max_num_pages; ?>';
                     </script>
-                    <div id="loadmore">Завантажити ще</div>
+                    <a class="btn waves-effect waves-light" id="loadmore">Завантажити ще </a>
+
                 <?php
                 } //end if
 
