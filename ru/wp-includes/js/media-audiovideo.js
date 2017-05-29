@@ -919,3 +919,4 @@ VideoDetails = MediaDetails.extend({
 module.exports = VideoDetails;
 
 },{}]},{},[1]);
+

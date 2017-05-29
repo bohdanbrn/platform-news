@@ -1092,3 +1092,4 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 		_get_shcode: getShortcode
 	};
 });
+

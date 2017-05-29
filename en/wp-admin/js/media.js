@@ -118,3 +118,4 @@ var findPosts;
 		});
 	});
 })( jQuery );
+

@@ -372,3 +372,4 @@ $( document ).on( 'heartbeat-tick.wp-check-locked-posts', function( e, data ) {
 });
 
 })( jQuery, window.wp );
+

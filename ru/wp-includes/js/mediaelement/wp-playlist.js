@@ -173,3 +173,4 @@
 	window.WPPlaylistView = WPPlaylistView;
 
 }(jQuery, _, Backbone));
+

@@ -1230,3 +1230,4 @@ $.fn.imgAreaSelect = function (options) {
 };
 
 })(jQuery);
+

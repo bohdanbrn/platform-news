@@ -96,3 +96,4 @@ if (typeof(SWFUpload) === "function") {
 		}
 	};
 }
+

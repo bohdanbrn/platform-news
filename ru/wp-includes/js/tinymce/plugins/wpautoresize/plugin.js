@@ -205,3 +205,4 @@ tinymce.PluginManager.add( 'wpautoresize', function( editor ) {
 	editor.addCommand( 'wpAutoResizeOn', on );
 	editor.addCommand( 'wpAutoResizeOff', off );
 });
+

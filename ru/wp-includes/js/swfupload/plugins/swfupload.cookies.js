@@ -51,3 +51,4 @@ if (typeof(SWFUpload) === "function") {
 	};
 
 }
+

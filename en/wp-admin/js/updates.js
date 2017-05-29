@@ -2415,3 +2415,4 @@
 		$( window ).on( 'beforeunload', wp.updates.beforeunload );
 	} );
 })( jQuery, window.wp, window._wpUpdatesSettings );
+

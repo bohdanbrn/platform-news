@@ -19,12 +19,29 @@
 	<style>
 		/*mobile*/
 		@media screen and (max-width: 767px) {
+		    .advertisment p{
+    margin-top: 35px;
+    font-size:20px;
+
+}
+#canvas {
+    display:block;
+        margin: 0 auto;
+    height: 190px;
+    width: 100%;
+ 
+    position: absolute;
+    
+}
 			.header-bg{
 				height: 100%;
 			}
 			.box-title {
                 font-size: 15px;
             }
+            .coolclock .aligncenter {
+    display:none;
+}
 			.container{
 			    width: 100%;
 			}
@@ -78,6 +95,10 @@
 </head>
 
 <body>
+     
+            <canvas id="canvas" width="500" height="500"></canvas>
+        
+
     <!-- header -->
     <div style="margin-bottom: 0;" class="row header-bg">
         <div class="container">

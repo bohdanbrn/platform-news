@@ -110,3 +110,4 @@ tinymce.PluginManager.add('wpgallery', function( editor ) {
 		}
 	});
 });
+

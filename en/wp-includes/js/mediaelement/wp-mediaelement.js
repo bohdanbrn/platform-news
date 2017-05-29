@@ -59,3 +59,4 @@
 	$( window.wp.mediaelement.initialize );
 
 })( window, jQuery );
+

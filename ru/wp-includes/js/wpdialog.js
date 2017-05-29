@@ -17,3 +17,4 @@
 	$.wp.wpdialog.prototype.options.closeOnEscape = false;
 
 })(jQuery);
+

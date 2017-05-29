@@ -448,3 +448,4 @@
 	}
 
 })( window, window._wpCustomHeaderSettings || {} );
+

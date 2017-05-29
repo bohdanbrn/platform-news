@@ -15,3 +15,4 @@ jQuery( document ).ready(function( $ ) {
 		$( '#link_rel' ).val( ( isMe ) ? 'me' : inputs.substr( 0,inputs.length - 1 ) );
 	});
 });
+

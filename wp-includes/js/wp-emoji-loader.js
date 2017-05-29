@@ -153,3 +153,4 @@
 	}
 
 } )( window, document, window._wpemojiSettings );
+

@@ -389,3 +389,4 @@
 
 	window.switchEditors = new SwitchEditors();
 }( window.jQuery ));
+

@@ -62,3 +62,4 @@ var wpAjax = jQuery.extend( {
 jQuery(document).ready( function($){
 	$('form.validate').submit( function() { return wpAjax.validateForm( $(this) ); } );
 });
+

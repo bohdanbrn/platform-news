@@ -67,3 +67,4 @@ var tb_position;
 	$(window).resize(function(){ tb_position(); });
 
 })(jQuery);
+

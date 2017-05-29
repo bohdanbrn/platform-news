@@ -699,3 +699,4 @@ var imageEdit = window.imageEdit = {
 	}
 };
 })(jQuery);
+

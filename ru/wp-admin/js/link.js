@@ -67,3 +67,4 @@ jQuery(document).ready( function($) {
 
 	$('.categorychecklist :checkbox').change( syncChecks ).filter( ':checked' ).change();
 });
+

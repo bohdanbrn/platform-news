@@ -227,3 +227,4 @@
 	window.wp.emoji = new wpEmoji();
 
 } )( window, window._wpemojiSettings );
+

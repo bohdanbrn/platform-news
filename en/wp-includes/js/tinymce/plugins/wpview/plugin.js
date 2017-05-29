@@ -206,3 +206,4 @@
 		};
 	} );
 } )( window.tinymce, window.wp );
+

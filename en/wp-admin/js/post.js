@@ -1265,3 +1265,4 @@ jQuery(document).ready( function($) {
 		update();
 	} );
 } )( jQuery, new wp.utils.WordCounter() );
+

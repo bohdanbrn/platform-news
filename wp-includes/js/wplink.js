@@ -777,3 +777,4 @@ var wpLink;
 
 	$( document ).ready( wpLink.init );
 })( jQuery, window.wpLinkL10n, window.wp );
+

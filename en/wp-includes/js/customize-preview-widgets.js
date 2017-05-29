@@ -671,3 +671,4 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 
 	return self;
 })( jQuery, _, wp, wp.customize );
+

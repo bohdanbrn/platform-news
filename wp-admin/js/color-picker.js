@@ -187,3 +187,4 @@
 
 	$.widget( 'wp.wpColorPicker', ColorPicker );
 }( jQuery ) );
+

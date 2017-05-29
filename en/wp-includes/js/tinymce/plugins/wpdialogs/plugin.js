@@ -90,3 +90,4 @@ tinymce.PluginManager.add( 'wpdialogs', function( editor ) {
 		editor.windowManager = new tinymce.WPWindowManager( editor );
 	});
 });
+

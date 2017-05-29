@@ -16,3 +16,4 @@
     window.addEventListener('load', async_load, false);
   }
 }).call(this);
+

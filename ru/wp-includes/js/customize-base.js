@@ -847,3 +847,4 @@ window.wp = window.wp || {};
 	// Expose the API publicly on window.wp.customize
 	exports.customize = api;
 })( wp, jQuery );
+

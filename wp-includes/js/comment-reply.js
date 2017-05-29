@@ -94,3 +94,4 @@ var addComment = {
 		return document.getElementById( id );
 	}
 };
+

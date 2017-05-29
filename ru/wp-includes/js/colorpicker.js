@@ -705,3 +705,4 @@ function ColorPicker() {
 	cp.autoHide();
 	return cp;
 	}
+

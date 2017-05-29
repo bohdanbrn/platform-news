@@ -285,3 +285,4 @@ inlineEditTax = {
 $(document).ready(function(){inlineEditTax.init();});
 
 })( jQuery, window.wp );
+

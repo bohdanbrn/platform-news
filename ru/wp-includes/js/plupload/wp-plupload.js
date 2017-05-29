@@ -424,3 +424,4 @@ window.wp = window.wp || {};
 
 	exports.Uploader = Uploader;
 })( wp, jQuery );
+

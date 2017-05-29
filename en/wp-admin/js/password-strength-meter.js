@@ -78,3 +78,4 @@ var passwordStrength;
 	// Back-compat.
 	passwordStrength = wp.passwordStrength.meter;
 })(jQuery);
+

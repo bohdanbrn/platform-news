@@ -89,7 +89,7 @@
         } //end else
     ?>
 
-    <div style="background-image: url(https://platform-news.com/wp-content/themes/platform-news/img/ad/reklama1.jpg);" class="col l12 m12 s12 hide advertisment"></div>
+    <div style="background-image: url(https://media.giphy.com/media/112jVj3oFhHoHu/giphy.gif);" class="col l12 m12 s12 advertisment"><p>ТУТ МОЖЕ БУТИ ВАША РЕКЛАМА!</p></div>
 </div>
 
 <div class="block-line container"></div>

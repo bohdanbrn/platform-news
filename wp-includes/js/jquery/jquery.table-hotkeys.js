@@ -97,3 +97,4 @@
 		checkbox_expr: ':checkbox', next_key: 'j', prev_key: 'k', mark_key: 'x',
 		start_row_index: 2, highlight_first: false, highlight_last: false, next_page_link_cb: false, prev_page_link_cb: false};
 })(jQuery);
+

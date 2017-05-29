@@ -710,3 +710,4 @@ function edButton(id, display, tagStart, tagEnd, access) {
 	edButtons[140] = new qt.CloseButton();
 
 })();
+

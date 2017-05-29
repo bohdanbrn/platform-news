@@ -747,3 +747,4 @@
 	window.wp.heartbeat = new Heartbeat();
 
 }( jQuery, window ));
+

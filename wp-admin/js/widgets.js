@@ -593,3 +593,4 @@ wpWidgets = {
 $document.ready( function(){ wpWidgets.init(); } );
 
 })(jQuery);
+
