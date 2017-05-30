@@ -1,147 +1,97 @@
- <!-- top news block -->
+<!-- top news block -->
 <div class="row container">
     <?php
-        $args = array(
-            'post_type' => array('post'),
-            'posts_per_page' => 3,
-            'publish' => true,
-            'orderby' => 'date',
-            'order' => 'DESC'
-        );
+        $posts_year = $wp_query->query[year];
+        $posts_month = $wp_query->query[monthnum];
+        $posts_day = $wp_query->query[day];
+        
+        //default sql-query
+        $sql = 'SELECT id, post_content, post_title FROM en_posts WHERE post_type = "post" AND post_content LIKE "%<img %" ORDER BY post_date DESC LIMIT 8';
+        
+        //if date was passed
+        if ( $wp_query->query ) {
+            if ( $posts_year && $posts_month && $posts_day ) {
+                //change default sql-request
+                $sql = 'SELECT id, post_content, post_title FROM en_posts WHERE post_type = "post" AND ( ( YEAR( en_posts.post_date ) =' . $posts_year . ' AND MONTH( en_posts.post_date ) =' . $posts_month . ' AND DAYOFMONTH( en_posts.post_date ) =' . $posts_day . ' ) ) AND post_content LIKE "%<img %" ORDER BY post_date DESC LIMIT 8';
+            }
+        }
+        global $wpdb;
+        $result = $wpdb->get_results( $sql );
         global $display_posts;		//variable to prevent duplicate posts
 		$display_posts = array();
-        $post_count = 0;
-        $query = new WP_Query( $args );
-        if ( $query->have_posts() ) {
+        if ( empty( $result ) ) {
+            echo "Nothing found!";
+        }
+        else {
+            //show left block
             echo '
             <div class="col l7 m7 s12">';
-            while ( $query->have_posts() ) {
-                $query->the_post();
-                if ( $post_count == 0 ) {
+            for ( $i = 0; $i < 3; $i++ ) {
+                if ( $i == 0 ) {
                     echo '
-                    <a href="' . get_the_permalink() . '" class="hover-link"> 
-                        <div class="main-news" style="background-image: url(' . first_post_image() . ');">
-                            <div class="mask">';
-                                $category = get_the_category();
-                                if ( !empty( $category ) ) {
-                                    echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
-                                }
+                    <div class="main-news">
+                        <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
+                            <img class="img-effect" src=' . first_post_image( $result[$i]->id ) . ' alt="' . get_the_title( $result[$i]->id ) . '">
+                        </a>
+                        <div>';
+                            $category = get_the_category( $result[$i]->id );
+                            if ( !empty( $category ) ) {
                                 echo '
+                                <div class="news-owner">
+                                    <a href="' . get_category_link( $category[0]->cat_ID ) . '" class="no-style">' . 
+                                        $category[0]->cat_name . '
+                                    </a>
+                                </div>';
+                            }
+                            echo '
+                            <a target="_blank" href="' . get_the_permalink( $result[$i]->id ) . '" class="hover-link"> 
                                 <div class="news-content">
                                     <div class="box-title">
-                                        <span class="hover-link">' . short_post_title(65) . '</span>
+                                        <span class="hover-link-main">' . get_the_title( $result[$i]->id ) . '</span>
                                     </div>
-                                    <div class="box-title-fot">' . get_the_time('j.m.Y') . '</div>' .
-                                    //<div class="box-title-fot-sec">' . get_the_author() . '</div>
+                                    <div class="box-title-fot">' . get_the_time( 'j.m.Y', $result[$i]->id ) . '</div>' .
+                                //<div class="box-title-fot-sec">' . get_the_author() . '</div>
                                 '</div>
-                            </div>
+                            </a>
                         </div>
-                    </a>';
-                } //end if
-                else if ( $post_count == 1 ) {
-                    echo '
-                    <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">
-                        <a href="' . get_the_permalink() . '" class="hover-link"> 
-                            <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
-                                <div class="mask">';
-                                    $category = get_the_category();
-                                    if ( !empty( $category ) ) {
-                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
-                                    }
-                                    echo '
-                                    <div class="news-content">
-                                        <div class="box-title-small">
-                                            <span class="hover-link">' . short_post_title(65) . '</span>
-                                        </div>
-                                        <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>' .
-                                        //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
-                                    '</div>
-                                </div>
-                            </div>
-                        </a>
                     </div>';
-                } //end else if
+
+                } //end if
+                else if ( $i == 1 ) {
+                    echo '
+                    <div style="padding-left: 0;" class="col l6 m6 s12 no-mob-pad">';
+                        show_sec_main_news( $result, $i );
+                        echo '
+                    </div>';
+                }
                 else {
                     echo '
-                    <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">
-                        <a href="' . get_the_permalink() . '" class="hover-link"> 
-                            <div class="main-news-sec" style="background-image: url(' . first_post_image() . ');">
-                                <div class="mask">';
-                                    $category = get_the_category();
-                                    if ( !empty( $category ) ) {
-                                        echo '<div class="news-owner">' . $category[0]->cat_name . '</div>';
-                                    }
-                                    echo '
-                                    <div class="news-content">
-                                        <div class="box-title-small">
-                                            <span class="hover-link">' . short_post_title(65) . '</span>
-                                        </div>
-                                        <div class="box-title-fot-small">' . get_the_time('j.m.Y') . '</div>' .
-                                        //<div class="box-title-fot-sec-small">' . get_the_author() . '</div>
-                                    '</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>'; 
-                } //end else
-                $display_posts[] = get_the_ID();
-                $post_count++;
-            } //end while
-            echo '
-            </div>';
-        } //end if
-
-        global $display_posts;		//variable to prevent duplicate posts
-        $args = array(
-            'post_type' => array('post'),
-            'posts_per_page' => 5,
-            'publish' => true,
-            'post__not_in' => $display_posts, //displays all articles, other than those
-            'orderby' => 'date',
-            'order' => 'DESC'
-        );
-        $query = new WP_Query( $args );
-        if ( $query->have_posts() ) {
-            echo '
-            <div class="col l5 m5 s12">
-                <div class="block-with-line">
-                    <div class="big-sign-line">Popular</div>
-                    <div class="block-line"></div>
-                </div>';
-                while ( $query->have_posts() ) {
-                    $query->the_post();
-                    echo '
-                    <div class="row small-news">
-                        <a href="' . get_the_permalink() . '" class="hover-link"> 
-                            <div class="col l6 m6 s6">
-                                <div class="main-news-small" style="background-image: url(' . first_post_image() . ');">
-                                    <div class="mask">';
-                                        $category = get_the_category();
-                                        if ( !empty( $category ) ) {
-                                            echo '
-                                            <div class="news-owner news-owner-small-block">' . 
-                                                $category[0]->cat_name . '
-                                            </div>';
-                                        }
-                                        //<div class="news-content">' . get_the_author() . '</div>
-                                        echo '
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col l6 m6 s6">
-                                <div class="news-owner-small">' . short_post_title(40) . '</div>
-                                <div class="news-small-text">' . short_post_desc(90) . '</div>
-                            </div>
-                        </a>
+                    <div style="padding-right: 0;" class="col l6 m6 s12 no-mob-pad">';
+                        show_sec_main_news( $result, $i );
+                        echo '
                     </div>';
-                    $display_posts[] = get_the_ID();
-                } //end while
+                } //end else
+                $display_posts[] = $result[$i]->id;
+            } //end for
+            echo '
+            </div>'; 
+
+
+            //show right block
+            echo '
+            <div  class="col l5 m5 s12">';
+                for ( $i = 3; $i < count( $result ); $i++ ) {
+                    show_img_post( $result[$i]->id );
+                    $display_posts[] = $result[$i]->id;
+                } //end for
                 echo '
-            </div>';
-        } //end if
+            </div>';         
+        } //end else
     ?>
 
-    <div style="background-image: url(https://platform-news.com/wp-content/themes/platform-news/img/ad/reklama1.jpg);" class="col l12 m12 s12 hide advertisment"></div>
+    <div style="background-image: url(https://media.giphy.com/media/112jVj3oFhHoHu/giphy.gif);" class="col l12 m12 s12 advertisment">
+        <p>HERE CAN BE YOUR ADVERTISING!</p>
+    </div>
 </div>
 
 <div class="block-line container"></div>
@@ -153,32 +103,48 @@
         'post_type' => array('post'),
         'posts_per_page' => 9,
         'paged' => ( get_query_var('paged') ) ? get_query_var('paged') : 1,
+        'year' => $posts_year,
+        'monthnum' => $posts_month,
+        'day' => $posts_day,
         'publish' => true,
         'post__not_in' => $display_posts, //displays all news, other than those
         'orderby' => 'date',
         'order' => 'DESC'
     );
-    $post_count = 0;
     
     $query = new WP_Query( $args );
     if ( $query->have_posts() ) {
         echo '
         <div class="row container all-news">
             <div class="col l9 m9 s12">';
+                $post_count = 0;
                 while ( $query->have_posts() ) {
-                    $query->the_post();
-                    $post_count++;
-                    if ( $post_count == 3 ) {
-                        show_default_post( $display_img = true );
+                    $query->the_post();      
+                    $post_img = first_post_image( $post->ID ); //повертає false якщо дний пост не містить зображення
+                    //якщо даний пост виводиться третім або більше по порядку та містить зобрадення
+                    if ( $post_count >= 2 && $post_img ) {
+                        show_default_post( true );
                         $post_count = 0;
                     }
-                    else{
+                    else {
                         show_default_post();
+                        $post_count++;
                     }
                 } //end while
                 echo '<div class="clear"></div>';
-                global $pagination_args;
-				the_posts_pagination( $pagination_args );
+                
+                if ( $query->max_num_pages > 1 ) { ?>
+                    <script>
+                        var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                        var news_posts = '<?php echo serialize( $query->query_vars ); ?>';
+                        var current_page = <?php echo ( get_query_var('paged') ) ? get_query_var('paged') : 1; ?>;
+                        var max_pages = '<?php echo $query->max_num_pages; ?>';
+                    </script>
+                    <a class="btn waves-effect waves-light" id="loadmore">Load more</a>
+
+                <?php
+                } //end if
+
 				wp_reset_postdata();
                 echo '
             </div>';

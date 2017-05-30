@@ -19,15 +19,28 @@
 	<style>
 		/*mobile*/
 		@media screen and (max-width: 767px) {
+		    .advertisment p{
+				margin-top: 35px;
+				font-size:20px;
+			}
+			#canvas {
+				display:block;
+				margin: 0 auto;
+				height: 190px;
+				width: 100%;
+				position: absolute;
+			}
 			.header-bg{
 				height: 100%;
 			}
-			  .box-title {
-
-    font-size: 15px;
-}
+			.box-title {
+                font-size: 15px;
+            }
+            .coolclock .aligncenter {
+				display:none;
+			}
 			.container{
-				width: 100%;
+			    width: 100%;
 			}
 			.no-mob-pad{
 				padding-left: 0 !important; 
@@ -37,8 +50,8 @@
 				max-height: 300px;
 			}
 			.news-title {
-    font-size: 20px;
-}
+                font-size: 20px;
+            }
 			.lang {
 				top: auto;
 				right: 0;
@@ -66,33 +79,38 @@
 			}
 		}
 	</style>
+	<!--
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4847471792519024",
-    enable_page_level_ads: true
-  });
-</script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-4847471792519024",
+            enable_page_level_ads: true
+        });
+    </script>
+	-->
+    <?php wp_head(); ?>
 </head>
 
 <body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+
     <!-- header -->
     <div style="margin-bottom: 0;" class="row header-bg">
-    <div class="container">
-        <a href="<?php echo get_home_url(); ?>">
-            <div class="col l3 m6 s12 header-logo "></div>
-        </a>
-        <div class="col l5 m6 s12 left float-for-mob">
-            <div class="header-sign-size">PLATFORM
-                <div class="header-sign-size header-sign-sec">NEWS</div>
+        <div class="container">
+            <a href="<?php echo get_home_url(); ?>">
+                <div class="col l3 m6 s12 header-logo "></div>
+            </a>
+            <div class="col l5 m6 s12 left float-for-mob">
+                <div class="header-sign-size">PLATFORM
+                    <div class="header-sign-size header-sign-sec">NEWS</div>
+                </div>
+                <div class="header-sign-thrd">НОВОСТИ В УКРАИНЕ И МИРЕ</div>
             </div>
-            <div class="header-sign-thrd">НОВОСТИ В УКРАИНЕ И МИРЕ</div>
-        </div>
-        <div class="col l4 m9 s7">
-            <?php
-                get_search_form();
-            ?>
-        </div>
+            <div class="col l4 m9 s7">
+                <?php
+                    get_search_form();
+                ?>
+            </div>
         </div>
     </div>
     <!-- end of the header -->
@@ -101,7 +119,7 @@
     <div class="lang right ">
         <div id="tabs-swipe-demo" class="tabs ">
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/../">УКР</a></li>
-            <li class="tab col s3"><a href="<?php echo get_home_url(); ?>" class="active">РУС</a></li>
+            <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/" class="active">РУС</a></li>
             <li class="tab col s3"><a href="<?php echo get_home_url(); ?>/../en">ENG</a></li>
         </div>
     </div>

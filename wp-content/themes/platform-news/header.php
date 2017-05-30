@@ -16,23 +16,20 @@
 
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<style>
+		<style>
 		/*mobile*/
 		@media screen and (max-width: 767px) {
 		    .advertisment p{
-    margin-top: 35px;
-    font-size:20px;
-
-}
-#canvas {
-    display:block;
-        margin: 0 auto;
-    height: 190px;
-    width: 100%;
- 
-    position: absolute;
-    
-}
+				margin-top: 35px;
+				font-size:20px;
+			}
+			#canvas {
+				display:block;
+				margin: 0 auto;
+				height: 190px;
+				width: 100%;
+				position: absolute;
+			}
 			.header-bg{
 				height: 100%;
 			}
@@ -40,8 +37,8 @@
                 font-size: 15px;
             }
             .coolclock .aligncenter {
-    display:none;
-}
+				display:none;
+			}
 			.container{
 			    width: 100%;
 			}
@@ -95,9 +92,7 @@
 </head>
 
 <body>
-     
-            <canvas id="canvas" width="500" height="500"></canvas>
-        
+	<canvas id="canvas" width="500" height="500"></canvas>   
 
     <!-- header -->
     <div style="margin-bottom: 0;" class="row header-bg">

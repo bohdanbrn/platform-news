@@ -1,6 +1,6 @@
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<div class="input-field">
-		<input id="search" type="search" placeholder="ПОИСК..." required name="s">
+		<input id="search" type="search" placeholder="Поиск..." required name="s">
 		<label class="label-icon" for="search">
 			<i class="material-icons">search</i>
 		</label>

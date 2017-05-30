@@ -13,6 +13,11 @@ outline: 1px solid blue;
 }
 */
 
+    
+#canvas {
+ display:none;   
+    
+}
 html{
     max-width: 6080px;
     margin: 0 auto;
@@ -123,11 +128,36 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .hover-link:hover{
-    color:#4d59a1 !important;
-    -webkit-transition:  2s ;
-    -moz-transition:  2s;
-    -o-transition:  2s ;
-    transition:  2s ;
+    color: #900022 !important;
+    -webkit-transition:all  1s ease-out;
+
+    -moz-transition:all 1s ease-out;
+    -o-transition:all 1s ease-out;
+    transition:all 1s ease-out;
+}
+.hover-link-main:hover{
+    color: lightgrey !important;
+    -webkit-transition: all 1s  ease-out;
+
+    -moz-transition:all 1s ease-out;
+    -o-transition: all 1s  ease-out;
+    transition:all  1s  ease-out;
+}
+.main-news:hover .hover-link-main{
+    color: lightgrey !important;
+    -webkit-transition: all 1s  ease-out;
+
+    -moz-transition:all 1s ease-out;
+    -o-transition: all 1s  ease-out;
+    transition:all  1s  ease-out;
+}
+.main-news-sec:hover .hover-link-main{
+    color: lightgrey !important;
+    -webkit-transition: all 1s  ease-out;
+
+    -moz-transition:all 1s ease-out;
+    -o-transition: all 1s  ease-out;
+    transition:all  1s  ease-out;
 }
 
 .menu-item a{
@@ -151,6 +181,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .main-news{
+    overflow:hidden;
     position: relative;
     margin-top: 20px;
     min-height: 350px;
@@ -160,6 +191,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .main-news-sec{
+    overflow:hidden;
     position: relative;
     margin-top: 20px;
     min-height: 250px;
@@ -169,6 +201,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .main-news-small{
+    overflow:hidden;
     position: relative;
     min-height: 100px;
     width: 100%;
@@ -211,7 +244,9 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
     position: relative;
     background-color: rgba(64, 64, 64, 0.5);
 }
-
+.fix-desc-text{
+    font-size: 10px;
+}
 .news-content{
     color: white;
     background-color: rgba(64, 64, 64, 0.8);
@@ -219,7 +254,9 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
     width: 100%;
     bottom: 0px;
 }
-
+.no-style{
+    color: white !important;
+}
 .box-title{
     padding-left: 5px;
     padding-right: 5px;
@@ -295,6 +332,7 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .news-small-text{
+
     font-size: 11.3px;
 }
 
@@ -322,11 +360,17 @@ box-shadow: 0px 5px 20px #9E9E9E !important;
 }
 
 .advertisment{
-    padding-left: 50px;
-    margin-top: 20px;
-    background-size: cover;
-    background-position: center;
+    margin-top:20px;
+    background-size:cover;
+    background-position:center;
+    text-align:center;
     height: 100px !important;
+}
+.advertisment p{
+    margin-top: 20px;
+    font-size:40px;
+    font-weight:500;
+    color:white;
 }
 
 .all-news{
@@ -454,55 +498,115 @@ footer div {
     margin: 0 auto;
 }
 
+
 /* pagination */
-.pagination{
-    background-color: rgba(255, 255, 255, 0.5);
-    width: auto;
-    height: auto;
-    right: auto;
-    padding-left: 0;
-    padding-right: 0;
-    position: static;
-    margin-top: 0px;
-    color:#000;
-    text-align: center;
-}
-.pagination a{
-    color:#000;
-}
+    .pagination{
+        background-color: rgba(255, 255, 255, 0.5);
+        width: auto;
+        height: auto;
+        right: auto;
+        padding-left: 0;
+        padding-right: 0;
+        position: static;
+        margin-top: 0px;
+        color:#000;
+        text-align: center;
+    }
+    .pagination a{
+        color:#000;
+    }
 
-.current {
-    background-color: #d82d19;
-    width: auto;
-    height: auto;
-    right: auto;
-    position: static;
-    margin: 7px;
-    color: white;
-    padding: 10px;
-    border-radius: 3px;
-}
-.prev{
-    font-weight: bolder;
-    color: #d82d19;
-    font-size: 25px; 
-}
+    .current {
+        background-color: #d82d19;
+        width: auto;
+        height: auto;
+        right: auto;
+        position: static;
+        margin: 7px;
+        color: white;
+        padding: 10px;
+        border-radius: 3px;
+    }
+    .prev{
+        font-weight: bolder;
+        color: #d82d19;
+        font-size: 25px; 
+    }
 
-.next{
-    font-weight: bolder;
-    color: #d82d19;
-    font-size: 25px; 
-}
+    .next{
+        font-weight: bolder;
+        color: #d82d19;
+        font-size: 25px; 
+    }
 
-.page-numbers{
-    margin: 7px;
-}
+    .page-numbers{
+        margin: 7px;
+    }
 
-.post-category{
-    margin-left: 5px;
-    padding: 1px 5px 1px 5px;
-    color: white;
-    background-color: #d82d19;
-}
+    .post-category{
+        margin-left: 5px;
+        padding: 1px 5px 1px 5px;
+        color: white;
+        background-color: #d82d19;
+    }
+
+
+    /*ajax pagination */
+    #loadmore{
+        width: 100%;
+        line-height: 1.6;
+        background: #1e1e1e; /* черный фон */
+        color: #FFF; /* белый цвет текста */
+        padding: 5px; /* отступы от границ 5px */
+        text-align: center; /* выравнивание текста по центру */
+        -moz-border-radius: 4px; 
+        -webkit-border-radius: 4px;
+        border-radius: 4px; /* закругление углов */
+        margin: 20px 0; /* отступы сверху и снизу от кнопки */
+        cursor:pointer; /* курсор мыши при наведении такой же, как при наведении на ссылку */
+    }
+
 /* end pagination */
+.main-news:hover .img-effect {
+       -webkit-transition:all 1s ease-out;
+    opacity: 1;
+    -webkit-transform: scale3d(1.1,1.1,1);
+    transform: scale3d(1.1,1.1,1);
+}
+.img-effect{
+           -webkit-transition:all 1s ease-out;
+opacity: 0.8;
+        position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+.img-effect-small{
+           -webkit-transition:all 1s ease-out;
+opacity: 0.8;
+        position: relative;
 
+    height: 100%;
+    max-width: 100%;
+}
+.main-news-sec:hover .img-effect {
+       -webkit-transition:  .8s ;
+    opacity: 1;
+    -webkit-transform: scale3d(1.1,1.1,1);
+    transform: scale3d(1.1,1.1,1);
+}
+.main-news-small:hover .img-effect {
+       -webkit-transition:all 1s ease-out;
+    opacity: 1;
+    -webkit-transform: scale3d(1.1,1.1,1);
+    transform: scale3d(1.1,1.1,1);
+}
+.effect-container:hover .img-effect-small {
+       -webkit-transition:  .8s ;
+    opacity: 1;
+    -webkit-transform: scale3d(1.1,1.1,1);
+    transform: scale3d(1.05,1.05,1.05);
+}
+.effect-container{
+    overflow: hidden;
+}
